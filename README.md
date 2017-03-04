@@ -17,7 +17,7 @@ Rest API URIs :
 		/api/task/undone/{username} : get all tasks undone by an user
 	POST: 	/api/task/new : add new task (taskname,description,startdate,deadline,worker)
 	PUT: 	/api/task/edit: edit a task (id,taskname,description,startdate,deadline,worker,done)
-	DELETE:	/api/task/delete/{id} : delete a task with given id
+	DELETE: /api/task/delete/{id} : delete a task with given id
 
 - Shift:
 	GET: 	/api/shift/all : get all shifts
