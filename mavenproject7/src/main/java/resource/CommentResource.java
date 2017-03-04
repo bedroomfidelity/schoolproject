@@ -6,6 +6,7 @@
 package resource;
 
 import DAO.CommentDAO;
+import DAO.NotiDAO;
 import DAO.TaskDAO;
 import DAO.UserDAO;
 import java.util.List;
@@ -20,6 +21,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import model.Comment;
+import model.Notification;
 import model.Task;
 import model.User;
 
@@ -31,6 +33,7 @@ import model.User;
 public class CommentResource {
     private CommentDAO dao = new CommentDAO();
     
+    //GET ALL COMMENTS IN A TASK WITH THE TASK'S GIVEN ID
     @GET
     @Path("{taskid}")
     @Produces(MediaType.APPLICATION_XML)
@@ -40,18 +43,26 @@ public class CommentResource {
         return tasks.get(0).getComments();
     }
     
+    //ADD NEW COMMENT WITH A FORM
     @POST
     @Path("add")
-    public Response addShift(@FormParam("commenter") String commenter,
+    public Response addComment(@FormParam("commenter") String commenter,
             @FormParam("taskid") Long taskid, @FormParam("content") String content){
         UserDAO userdao = new UserDAO();
         TaskDAO taskdao = new TaskDAO();
         User user = userdao.getByUsername(commenter).get(0);
         Task task = taskdao.getById(taskid).get(0);
         Comment comment = new Comment(content, user, task);
+        dao.addComment(comment);
+        //add new notification
+        User u = task.getWorkers().get(0);
+        NotiDAO notidao = new NotiDAO();
+        Notification noti = new Notification(u, comment , "add");
+        notidao.addNotification(noti);
         return Response.status(200).build();
     }
     
+    //EDIT A COMMENT WITH A FORM
     @PUT
     @Path("edit")
     public Response editComment(@FormParam("commentid") Long id,
@@ -69,9 +80,10 @@ public class CommentResource {
         return Response.status(200).build();
     }
     
+    //DELETE A COMMENT WITH A GIVEN ID
     @DELETE
     @Path("delete/{id}")
-    public Response deleteShift(@PathParam("id") Long id){
+    public Response deleteComment(@PathParam("id") Long id){
         Comment comment = dao.getById(id).get(0);
         dao.deleteComment(comment);
         return Response.status(200).build();

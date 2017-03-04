@@ -7,6 +7,7 @@ resource\ShiftResource.class
 resource\UserResource.class
 DAO\MessageDAO.class
 Util\StartUp$1.class
+DAO\NotiDAO.class
 resource\MessageResource.class
 model\Message.class
 Util\StartUp.class
@@ -15,6 +16,8 @@ DAO\TaskDAO.class
 resource\SendMessageWithFile.class
 resource\AppConfig.class
 model\Shift.class
+resource\NotiResource.class
 DAO\UserDAO.class
 model\Comment.class
 model\User.class
+model\Notification.class

@@ -15,11 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,36 +30,36 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 public class Message implements Serializable {
+
     private Long messageID;
     private String content;
     private User sender;
     private User receiver;
     private String file;
-    private boolean read;
     private Date sentdate;
-    
-    public Message(){}
+    private Notification notification;
 
-    public Message(String content, User sender, User receiver, boolean read, Date sentdate) {
+    public Message() {
+    }
+
+    public Message(String content, User sender, User receiver, Date sentdate) {
         this.content = content;
         this.sender = sender;
         this.receiver = receiver;
-        this.read = read;
         this.sentdate = sentdate;
     }
 
-    public Message(String content, User sender, User receiver, String file, boolean read, Date sentdate) {
+    public Message(String content, User sender, User receiver, String file, Date sentdate) {
         this.content = content;
         this.sender = sender;
         this.receiver = receiver;
         this.file = file;
-        this.read = read;
         this.sentdate = sentdate;
     }
-    
+
     @Id
     @GeneratedValue
-    @Column(name="messageID")
+    @Column(name = "messageID")
     @XmlElement
     public Long getMessageID() {
         return messageID;
@@ -66,11 +68,10 @@ public class Message implements Serializable {
     public void setMessageID(Long messageID) {
         this.messageID = messageID;
     }
-    
-    
+
     @Lob
     @Size(max = 65535)
-    @Column(name = "content",nullable = false)
+    @Column(name = "content", nullable = false)
     @XmlElement
     public String getContent() {
         return content;
@@ -79,9 +80,9 @@ public class Message implements Serializable {
     public void setContent(String content) {
         this.content = content;
     }
-    
+
     @ManyToOne
-    @JoinColumn(name = "sender",referencedColumnName = "username",nullable = false)
+    @JoinColumn(name = "sender", referencedColumnName = "username", nullable = false)
     @XmlElement
     public User getSender() {
         return sender;
@@ -92,7 +93,7 @@ public class Message implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "receiver",referencedColumnName = "username",nullable = false)
+    @JoinColumn(name = "receiver", referencedColumnName = "username", nullable = false)
     @XmlElement
     public User getReceiver() {
         return receiver;
@@ -111,18 +112,8 @@ public class Message implements Serializable {
     public void setFile(String file) {
         this.file = file;
     }
-    
-    @Column(name = "isread",nullable=false)
-    @XmlElement
-    public boolean isRead() {
-        return read;
-    }
 
-    public void setRead(boolean read) {
-        this.read = read;
-    }
-    
-    @Column(name = "sentdate",nullable=false)
+    @Column(name = "sentdate", nullable = false)
     @Temporal(TemporalType.TIME)
     @XmlElement
     public Date getSentdate() {
@@ -131,6 +122,16 @@ public class Message implements Serializable {
 
     public void setSentdate(Date sentdate) {
         this.sentdate = sentdate;
+    }
+
+    @OneToOne(mappedBy = "message")
+    @XmlTransient
+    public Notification getNotification() {
+        return notification;
+    }
+
+    public void setNotification(Notification notification) {
+        this.notification = notification;
     }
 
     @Override
@@ -157,7 +158,5 @@ public class Message implements Serializable {
         }
         return true;
     }
-    
-    
-    
+
 }

@@ -19,8 +19,8 @@ public class UserTaskDAO {
     public void addUserTask(String user, Long taskid){
         session.beginTransaction();
         SQLQuery q = session.createSQLQuery("insert into user_task(worker,task) values(?,?);");
-        q.setString(1, user);
-        q.setLong(2, taskid);
+        q.setString(0, user);
+        q.setLong(1, taskid);
         q.executeUpdate();
         session.getTransaction().commit();
         

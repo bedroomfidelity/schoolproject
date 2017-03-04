@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,9 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -25,24 +29,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 public class Comment implements Serializable {
+
     private Long commentID;
     private String comment;
     private User commenter;
     private Task onTask;
-    
-    public Comment(){}
+    private Notification notifications;
+
+    public Comment() {
+    }
 
     public Comment(String comment, User commenter, Task onTask) {
         this.comment = comment;
         this.commenter = commenter;
         this.onTask = onTask;
     }
-    
-    
-    
+
     @Id
     @GeneratedValue
-    @Column(name="commentID")
+    @Column(name = "commentID")
     @XmlElement
     public Long getCommentID() {
         return commentID;
@@ -51,10 +56,10 @@ public class Comment implements Serializable {
     public void setCommentID(Long commentID) {
         this.commentID = commentID;
     }
-    
+
     @Lob
     @Size(max = 65535)
-    @Column(name="comment",nullable = false)
+    @Column(name = "comment", nullable = false)
     @XmlElement
     public String getComment() {
         return comment;
@@ -63,9 +68,9 @@ public class Comment implements Serializable {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    
+
     @ManyToOne
-    @JoinColumn(name = "commenter",referencedColumnName = "username",nullable = false)
+    @JoinColumn(name = "commenter", referencedColumnName = "username", nullable = false)
     @XmlElement
     public User getCommenter() {
         return commenter;
@@ -76,7 +81,7 @@ public class Comment implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "onTask",referencedColumnName = "taskname",nullable = false)
+    @JoinColumn(name = "onTask", referencedColumnName = "taskname", nullable = false)
     @XmlElement
     public Task getOnTask() {
         return onTask;
@@ -84,6 +89,16 @@ public class Comment implements Serializable {
 
     public void setOnTask(Task onTask) {
         this.onTask = onTask;
+    }
+
+    @OneToOne(mappedBy = "comment")
+    @XmlTransient
+    public Notification getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(Notification notifications) {
+        this.notifications = notifications;
     }
 
     @Override
@@ -110,5 +125,5 @@ public class Comment implements Serializable {
         }
         return true;
     }
-    
+
 }

@@ -32,17 +32,19 @@ import org.hibernate.annotations.CascadeType;
 @Entity
 @XmlRootElement
 public class Task implements Serializable {
+
     private Long taskID;
     private String taskname;
     private String description;
     private Date startdate;
     private Date deadline;
     private boolean done;
-    private boolean noticed;
     private List<User> workers;
     private List<Comment> comments;
-    
-    public Task(){}
+    private List<Notification> notifications;
+
+    public Task() {
+    }
 
     public Task(String taskname, String description, Date startdate, Date deadline, boolean done) {
         this.taskname = taskname;
@@ -50,12 +52,11 @@ public class Task implements Serializable {
         this.startdate = startdate;
         this.deadline = deadline;
         this.done = done;
-        this.noticed=false;
     }
-    
+
     @Id
     @GeneratedValue
-    @Column(name="taskID")
+    @Column(name = "taskID")
     @XmlElement
     public Long getTaskID() {
         return taskID;
@@ -64,20 +65,8 @@ public class Task implements Serializable {
     public void setTaskID(Long taskID) {
         this.taskID = taskID;
     }
-    
-    @XmlElement
-    @Column(name="noticed", nullable =false)
-    public boolean isNoticed() {
-        return noticed;
-    }
 
-    public void setNoticed(boolean noticed) {
-        this.noticed = noticed;
-    }
-    
-    
-    
-    @Column(name="taskname",nullable = false)
+    @Column(name = "taskname", nullable = false)
     @XmlElement
     public String getTaskname() {
         return taskname;
@@ -86,10 +75,10 @@ public class Task implements Serializable {
     public void setTaskname(String taskname) {
         this.taskname = taskname;
     }
-    
+
     @Lob
     @Size(max = 65535)
-    @Column(name="description",nullable = false)
+    @Column(name = "description", nullable = false)
     @XmlElement
     public String getDescription() {
         return description;
@@ -100,7 +89,7 @@ public class Task implements Serializable {
     }
 
     @Temporal(TemporalType.TIME)
-    @Column(name="startdate",nullable = false)
+    @Column(name = "startdate", nullable = false)
     @XmlElement
     public Date getStartdate() {
         return startdate;
@@ -111,7 +100,7 @@ public class Task implements Serializable {
     }
 
     @Temporal(TemporalType.TIME)
-    @Column(name="deadline",nullable = false)
+    @Column(name = "deadline", nullable = false)
     @XmlElement
     public Date getDeadline() {
         return deadline;
@@ -120,8 +109,8 @@ public class Task implements Serializable {
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
-    
-    @Column(name = "done",nullable = false)
+
+    @Column(name = "done", nullable = false)
     @XmlElement
     public boolean isDone() {
         return done;
@@ -130,7 +119,7 @@ public class Task implements Serializable {
     public void setDone(boolean done) {
         this.done = done;
     }
-    
+
     @ManyToMany(mappedBy = "username")
     @Cascade(CascadeType.ALL)
     @XmlTransient
@@ -141,7 +130,7 @@ public class Task implements Serializable {
     public void setWorkers(List<User> workers) {
         this.workers = workers;
     }
-    
+
     @OneToMany(mappedBy = "onTask")
     @Cascade(CascadeType.ALL)
     @XmlTransient
@@ -151,6 +140,16 @@ public class Task implements Serializable {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    @OneToMany(mappedBy = "task")
+    @XmlTransient
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
     }
 
     @Override
@@ -177,6 +176,5 @@ public class Task implements Serializable {
         }
         return true;
     }
-    
-    
+
 }

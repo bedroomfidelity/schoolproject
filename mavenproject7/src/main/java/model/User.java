@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlElement;
@@ -28,7 +27,8 @@ import org.hibernate.annotations.*;
  */
 @Entity
 @XmlRootElement
-public class User implements Serializable{
+public class User implements Serializable {
+
     private Long userID;
     private String username;
     private String password;
@@ -38,17 +38,18 @@ public class User implements Serializable{
     private String firstname;
     private String lastname;
     private String address;
-    private boolean notification;
     private String image;
     private List<Message> sentMessages;
     private List<Message> receivedMessages;
     private List<Shift> shifts;
     private List<Task> tasks;
-    
-    public User(){}
+    private List<Notification> notifications;
 
-    public User(String username, String password, String title, String email, String phoneNumber, 
-            String firstname, String lastname, boolean notification, String image) {
+    public User() {
+    }
+
+    public User(String username, String password, String title, String email, String phoneNumber,
+            String firstname, String lastname, String image) {
         this.username = username;
         this.password = password;
         this.title = title;
@@ -56,12 +57,11 @@ public class User implements Serializable{
         this.phoneNumber = phoneNumber;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.notification = notification;
         this.image = image;
     }
 
     public User(String username, String password, String title, String email, String phoneNumber,
-            String firstname, String lastname, String address, boolean notification, String image) {
+            String firstname, String lastname, String address, String image) {
         this.username = username;
         this.password = password;
         this.title = title;
@@ -70,12 +70,9 @@ public class User implements Serializable{
         this.firstname = firstname;
         this.lastname = lastname;
         this.address = address;
-        this.notification = notification;
         this.image = image;
     }
-    
-    
-    
+
     @Id
     @GeneratedValue
     @Column(name = "userID")
@@ -87,18 +84,18 @@ public class User implements Serializable{
     public void setUserID(Long userID) {
         this.userID = userID;
     }
-    
-    @Column(name = "username",nullable = false,unique = true)
+
+    @Column(name = "username", nullable = false, unique = true)
     @XmlElement
     public String getUsername() {
         return username;
     }
-    
+
     public void setUsername(String username) {
         this.username = username;
     }
-    
-    @Column(name = "password",nullable = false)
+
+    @Column(name = "password", nullable = false)
     @XmlElement
     public String getPassword() {
         return password;
@@ -108,7 +105,7 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    @Column(name = "title",nullable = false)
+    @Column(name = "title", nullable = false)
     @XmlElement
     public String getTitle() {
         return title;
@@ -117,8 +114,8 @@ public class User implements Serializable{
     public void setTitle(String title) {
         this.title = title;
     }
-    
-    @Column(name = "email",nullable = false,unique = true)
+
+    @Column(name = "email", nullable = false, unique = true)
     @XmlElement
     public String getEmail() {
         return email;
@@ -127,8 +124,8 @@ public class User implements Serializable{
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    @Column(name = "phone",nullable = false)
+
+    @Column(name = "phone", nullable = false)
     @XmlElement
     public String getPhoneNumber() {
         return phoneNumber;
@@ -137,8 +134,8 @@ public class User implements Serializable{
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
-    @Column(name = "firstname",nullable = false)
+
+    @Column(name = "firstname", nullable = false)
     @XmlElement
     public String getFirstname() {
         return firstname;
@@ -148,7 +145,7 @@ public class User implements Serializable{
         this.firstname = firstname;
     }
 
-    @Column(name = "lastname",nullable = false)
+    @Column(name = "lastname", nullable = false)
     @XmlElement
     public String getLastname() {
         return lastname;
@@ -157,7 +154,7 @@ public class User implements Serializable{
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-    
+
     @Column(name = "address")
     @XmlElement
     public String getAddress() {
@@ -168,18 +165,8 @@ public class User implements Serializable{
         this.address = address;
     }
 
-    @Column(name = "notification",nullable = false)
     @XmlElement
-    public boolean isNotification() {
-        return notification;
-    }
-
-    public void setNotification(boolean notification) {
-        this.notification = notification;
-    }
-    
-    @XmlElement
-    @Column(name="image")
+    @Column(name = "image")
     public String getImage() {
         return image;
     }
@@ -187,7 +174,17 @@ public class User implements Serializable{
     public void setImage(String image) {
         this.image = image;
     }
-    
+
+    @OneToMany(mappedBy = "user")
+    @XmlTransient
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
     @OneToMany(mappedBy = "sender")
     @Cascade({CascadeType.SAVE_UPDATE})
     @XmlTransient
@@ -198,7 +195,7 @@ public class User implements Serializable{
     public void setSentMessages(List<Message> sentMessages) {
         this.sentMessages = sentMessages;
     }
-    
+
     @OneToMany(mappedBy = "receiver")
     @Cascade({CascadeType.SAVE_UPDATE})
     @XmlTransient
@@ -209,7 +206,7 @@ public class User implements Serializable{
     public void setReceivedMessages(List<Message> receivedMessages) {
         this.receivedMessages = receivedMessages;
     }
-    
+
     @OneToMany(mappedBy = "shiftID")
     @Cascade({CascadeType.ALL})
     @XmlTransient
@@ -220,7 +217,7 @@ public class User implements Serializable{
     public void setShifts(List<Shift> shifts) {
         this.shifts = shifts;
     }
-    
+
     @ManyToMany
     @JoinTable(name = "user_task", joinColumns = {
         @JoinColumn(name = "worker", referencedColumnName = "username")}, inverseJoinColumns = {
@@ -259,6 +256,5 @@ public class User implements Serializable{
         }
         return true;
     }
-    
-    
+
 }

@@ -40,6 +40,7 @@ public class AppConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(resource.CommentResource.class);
         resources.add(resource.MessageResource.class);
+        resources.add(resource.NotiResource.class);
         resources.add(resource.ShiftResource.class);
         resources.add(resource.TaskResource.class);
         resources.add(resource.UserResource.class);

@@ -5,6 +5,7 @@
  */
 package resource;
 
+import DAO.NotiDAO;
 import DAO.ShiftDAO;
 import DAO.UserDAO;
 import java.util.Date;
@@ -19,6 +20,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import model.Notification;
 import model.Shift;
 import model.User;
 
@@ -30,6 +32,7 @@ import model.User;
 public class ShiftResource {
     private ShiftDAO dao = new ShiftDAO();
     
+    //GET ALL THE SHIFTS IN THE DATABASE
     @GET
     @Path("all")
     @Produces(MediaType.APPLICATION_XML)
@@ -37,6 +40,7 @@ public class ShiftResource {
         return dao.getAllShift();
     }
     
+    //GET ALL THE SHIFTS ASSIGNED TO AN USER
     @GET
     @Path("getbyname/{name}")
     @Produces(MediaType.APPLICATION_XML)
@@ -44,6 +48,7 @@ public class ShiftResource {
         return dao.getByName(name);
     }
     
+    //ADD A NEW SHIFT WITH A FORM
     @POST
     @Path("add")
     public Response addShift(@FormParam("employee") String employee,
@@ -52,9 +57,14 @@ public class ShiftResource {
         User user = userdao.getByUsername(employee).get(0);
         Shift shift = new Shift(user, starttime, endtime);
         dao.addShift(shift);
+        //add new notification
+        NotiDAO notidao = new NotiDAO();
+        Notification noti = new Notification(user,shift , "add");
+        notidao.addNotification(noti);
         return Response.status(200).build();
     }
     
+    //EDIT A SHIFT'S INFORMATION WITH A FORM
     @PUT
     @Path("edit")
     public Response editShift(@FormParam("id") Long id,
@@ -62,18 +72,29 @@ public class ShiftResource {
             @FormParam("endtime") Date endtime){
         UserDAO userdao = new UserDAO();
         Shift shift = dao.getById(id).get(0);
-        shift.setEmployee(userdao.getByUsername(employee).get(0));
+        User user = userdao.getByUsername(employee).get(0);
+        shift.setEmployee(user);
         shift.setEndtime(endtime);
         shift.setStarttime(starttime);
         dao.editShift(shift);
+        //add new notification
+        NotiDAO notidao = new NotiDAO();
+        Notification noti = new Notification(user, shift , "edit");
+        notidao.addNotification(noti);
         return Response.status(200).build();
     }
     
+    //DELETE A SHIFT WITH GIVEN ID
     @DELETE
     @Path("delete/{id}")
     public Response deleteShift(@PathParam("id") Long id){
         Shift shift = dao.getById(id).get(0);
+        User user = shift.getEmployee();
         dao.deleteShift(shift);
+        //add new notification
+        NotiDAO notidao = new NotiDAO();
+        Notification noti = new Notification(user, "shift deleted");
+        notidao.addNotification(noti);
         return Response.status(200).build();
     }
 }

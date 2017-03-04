@@ -77,7 +77,7 @@ public class SendMessageWithFile extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+    /*@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         MessageDAO messagedao = new MessageDAO();
@@ -92,7 +92,7 @@ public class SendMessageWithFile extends HttpServlet {
             message.setFile("d:/server/files/"+request.getPart("file").getSubmittedFileName());
         }
         messagedao.addMessage(message);
-    }
+    }*/
 
     /**
      * Returns a short description of the servlet.

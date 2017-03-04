@@ -96,16 +96,4 @@ public class TaskDAO {
         return tasks;
     }
     
-    public List<Task> getTaskByWorkerUnread(String worker){
-        UserDAO userdao = new UserDAO();
-        User user = userdao.getByUsername(worker).get(0);
-        List<Task> task = user.getTasks();
-        List<Task> tasks = new ArrayList<>();
-        for (Task t:task){
-            if(t.isNoticed()==false){
-                tasks.add(t);
-            }
-        }
-        return tasks;
-    }
 }

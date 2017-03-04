@@ -24,43 +24,46 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 public class StartUp implements ServletContextListener {
     
     private static SessionFactory sessionFactory;
-            
+    
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         Configuration config = new Configuration();
         config.addAnnotatedClass(model.User.class)
-              .addAnnotatedClass(model.Task.class)
-              .addAnnotatedClass(model.Message.class)
-              .addAnnotatedClass(model.Comment.class)
-              .addAnnotatedClass(model.Shift.class);
+                .addAnnotatedClass(model.Task.class)
+                .addAnnotatedClass(model.Message.class)
+                .addAnnotatedClass(model.Comment.class)
+                .addAnnotatedClass(model.Shift.class)
+                .addAnnotatedClass(model.Notification.class);
         config.configure();
         new SchemaExport(config).drop(false,false);
-            
-        StandardServiceRegistryBuilder serviceRegistryBuilder = 
-                new StandardServiceRegistryBuilder();
+        
+        StandardServiceRegistryBuilder serviceRegistryBuilder
+                = new StandardServiceRegistryBuilder();
         serviceRegistryBuilder.applySettings(config.getProperties());
-
+        
         final ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
         
         config.setSessionFactoryObserver(new SessionFactoryObserver() {
             @Override
-            public void sessionFactoryCreated(SessionFactory factory) {}
+            public void sessionFactoryCreated(SessionFactory factory) {
+            }
+
             @Override
             public void sessionFactoryClosed(SessionFactory factory) {
                 System.out.println("sessionFactoryClosed()");
                 ((StandardServiceRegistryImpl) serviceRegistry).destroy();
             }
         });
-
+        
         sessionFactory = config.buildSessionFactory(serviceRegistry);
     }
-
+    
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         
     }
     
-    public static SessionFactory getSessionFactory(){
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
     
