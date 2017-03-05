@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link href="css/web.css" rel="stylesheet" type="text/css"/>
+    <link href="css/Assignment.css" rel="stylesheet" type="text/css"/>
+</head>
+<body id="main">
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="banner">
+        <a href="ManagerHome.html">
+            <img src="pic/icon.png" alt="logohere">
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="dropdown" id="profile-tag">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="pic/profile-picture.png" alt="profile picture">
+                <p>Khanh Phan</p>
+            </a>
+            <div class="dropdown-menu">
+                <a href="ManagerProfile.html">My Profile</a>
+                <br>
+                <a href="index.html">Log out</a>
+            </div>
+        </div>
+    </div>
+    <div class="hidden-md-down" id="sidebar">
+        <ul class="list-group" id="menu">
+            <li class="list-group-item"><a href="ManagerHome.html">Home</a></li>
+            <li class="list-group-item"><a href="#">Task Assignment</a></li>
+            <li class="list-group-item"><a href="MessegesManager.html">Messages</a></li>
+            <li class="list-group-item"><a href="Register.html">Register</a></li>
+
+        </ul>
+    </div>
+    <div id="all-content">
+
+        <form class="form-horizontal" action='' method="POST">
+            <fieldset>
+                <div id="legend">
+                    <h3 class="newr">Assign new task</h3>
+                </div>
+                <div class="control-group">
+
+                    <label class="control-label"  for="username">Task</label>
+                    <div class="controls">
+                        <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <div class="control-group">
+
+                    <label class="control-label" for="email">Responsible Team</label>
+                    <div class="controls">
+                        <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+
+                    </div>
+                </div>
+
+                <div class="control-group">
+
+                    <label class="control-label" for="password">Date</label>
+                    <div class="controls">
+                        <input type="date" id="password" name="password" placeholder="" class="input-xlarge">
+
+                    </div>
+                </div>
+
+                <div class="control-group">
+
+                    <label class="control-label"  for="password_confirm">Time</label>
+                    <div class="controls">
+                        <input type="time" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
+
+                    </div>
+                </div>
+
+                <div class="control-group">
+
+                    <div class="controls">
+                        <br><button class="btn btn-primary" id="button">Done</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+

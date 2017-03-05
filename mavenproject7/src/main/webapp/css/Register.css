@@ -1,0 +1,16 @@
+.input-xlarge{
+    width: 50%;
+    border-radius: 5px;
+}
+.form-horizontal{
+    margin-left: 350px;
+    margin-top: 100px;
+}
+.help-block{
+    font-weight: bold;
+}
+#button{
+    background-color: #1A2930;
+    border-color: #1A2930;
+    margin-top: 10px;
+}

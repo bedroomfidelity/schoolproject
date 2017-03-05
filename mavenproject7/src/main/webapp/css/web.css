@@ -1,21 +1,25 @@
 /*----------------------------------------General theme----------------------------------------------------------------*/
 html,body{
     overflow-x: hidden;
-}
+    background-color: #CFCFCF;
+    }
 #main{
-    background-color: #404040;
+    background-color: #1A2930;
 }
 /*-----------Top Part------------*/
 #banner{
     display:block;
     width:100%;
-    background-color: #404040;
+    background-color:#1A2930 ;
     color: white;
     position:fixed;
     z-index: 999;
 }
 #banner img {
     float: left;
+    width: 200px;
+    height: 75px;
+
 }
 #buttun{
     display:inline-block;
@@ -55,7 +59,7 @@ html,body{
     position: fixed;
     width: 13%;
     min-width: 10%;
-    background-color:  #303030;
+    background-color: #1A2930;
     height: 100%;
 }
 .list-group li{
@@ -66,7 +70,9 @@ html,body{
     padding: 1.5em;
     text-transform: uppercase;
     font-weight: bold;
-    background-color:  #303030;
+    background-color: #1A2930;
+    font-family: monospace;
+    font-size: x-large;
 }
 .list-group li a{
     color: white;
@@ -74,7 +80,7 @@ html,body{
 /*--------Body of the page--------*/
 #all-content{
     display:inline-block;
-    margin-top: 4em;
+    margin-top: 6em;
     padding: 1em;
     background-color: white;
     height: 100%;
@@ -83,6 +89,9 @@ html,body{
 }
 #content {
 
+}
+.dropdown{
+    margin-left: 100px;
 }
 
 

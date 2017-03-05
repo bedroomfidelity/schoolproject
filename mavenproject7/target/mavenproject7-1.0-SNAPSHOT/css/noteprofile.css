@@ -6,9 +6,11 @@
     margin-top: 70px;
 }
 
-.btn{
+#button{
     margin-top: 10px;
-    margin-left: 90px;
+    margin-left: 50px;
+    background-color: #1A2930;
+    border-color: #1A2930;
 }
 .table-user-information > tbody > tr {
     border-top: 1px solid rgb(221, 221, 221);

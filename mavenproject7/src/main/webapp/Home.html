@@ -10,7 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <link href="css/web.css" rel="stylesheet" type="text/css"/>
     <link href="css/Home.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="js/Home.js"></script> 
+    <script src="js/Home.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="main">
@@ -27,7 +27,7 @@
                     <p id="userid">Khanh Phan</p>
                 </a>
                 <div class="dropdown-menu">
-                    <a href="profile.html">My Profile</a>
+                    <a href="noteprofile.html">My Profile</a>
                     <br>
                     <a href="index.html">Log out</a>
                 </div>
@@ -35,11 +35,10 @@
         </div>
         <div class="hidden-md-down" id="sidebar">
             <ul class="list-group" id="menu">
-                <li class="list-group-item" id="sidebar-home"><a href="#">Home</a></li>
-                <li class="list-group-item" id="sidebar-task"><a href="Task.html">Tasks</a></li>
-                <li class="list-group-item" id="sidebar-message"><a href="Messages.html">Messages</a></li>
-                <li class="list-group-item" id="sidebar-calendar"><a href="Calendar.html">Calendar</a></li>
-                <li class="list-group-item" id="sidebar-managing"><a href="#">Managing</a></li>
+                <li class="list-group-item"><a href="#">Home</a></li>
+                <li class="list-group-item"><a href="Task.html">Tasks</a></li>
+                <li class="list-group-item"><a href="Messeges.html">Messages</a></li>
+                <li class="list-group-item"><a href="Calendar.html">Calendar</a></li>
             </ul>
         </div>
         <div id="all-content">
@@ -50,14 +49,6 @@
                         <h3>Task List</h3>
                         <div id="task-content">
                             <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group item heading</h5>
-                                        <small class="text-muted">3 days ago</small>
-                                    </div>
-                                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                    <button type="button" class="btn btn-default btn-sm" name="done-button">Done</button>
-                                </a>
                                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1">List group item heading</h5>

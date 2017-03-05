@@ -13,6 +13,8 @@ $(document).ready(function(){
         document.cookie = "uname="+username+";path=/;";
         console.log(username);
         console.log(document.cookie);
+     } else {
+        username = getCookie('uname');
      }
     websitebuild(username); 
 });

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link href="css/web.css" rel="stylesheet" type="text/css"/>
+    <link href="css/Messeges.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="main">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="banner">
+        <a href="ManagerHome.html">
+            <img src="pic/icon.png" alt="logohere">
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="dropdown" id="profile-tag">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="pic/profile-picture.png" alt="profile picture">
+                <p>Khanh Phan</p>
+            </a>
+            <div class="dropdown-menu">
+                <a href="profile.html">My Profile</a>
+                <br>
+                <a href="index.html">Log out</a>
+            </div>
+        </div>
+    </div>
+    <div class="hidden-md-down" id="sidebar">
+        <ul class="list-group" id="menu">
+            <li class="list-group-item"><a href="#">Home</a></li>
+            <li class="list-group-item"><a href="AssignManager.html">Task Assignment</a></li>
+            <li class="list-group-item"><a href="MessegesManager.html">Messages</a></li>
+            <li class="list-group-item"><a href="Register.html">Register</a></li>
+
+        </ul>
+    </div>
+    <div id="all-content">
+        <div id="chat-window">
+            <div class="row">
+                <div class="col-md-3 col-lg-3 hidden-lg-down" id="recent-contact">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button">Go</button>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Search conversation">
+                    </div>
+                    <div class="dropdown" id="new-mess-dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="new-mess-button">+ New Messenge <span class="caret"></span></button>
+                        <form class="dropdown-menu">
+                            <div class="form-group">
+                                <label for="mess-recipient">To</label>
+                                <input type="text" class="form-control" id="mess-recipient">
+                            </div>
+                            <div class="form-group">
+                                <label for="new-mess-content">Message</label>
+                                <textarea type="text" class="form-control" id="new-mess-content"></textarea>
+                            </div>
+                            <input type="file">
+                            <button class="btn btn-primary" type="submit">Send</button>
+                        </form>
+                    </div>
+                    <div id="recent-contact-list">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">GetJson()</h5>
+                                    <small>15:40</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Sure vcl :v</p>
+                                    <span class="badge badge-default">3</span>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Khanh Phan</h5>
+                                    <small>15:40</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Sure vcl :v</p>
+                                    <span class="badge badge-default">1</span>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Some one</h5>
+                                    <small>15:40</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Sure vcl :v</p>
+                                    <span class="badge badge-default">4</span>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">ROFL</h5>
+                                    <small>15:40</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Sure vcl :v</p>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">ROFL</h5>
+                                    <small>15:40</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Sure vcl :v</p>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">ROFL</h5>
+                                    <small>15:40</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Sure vcl :v</p>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">ROFL</h5>
+                                    <small>15:40</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Sure vcl :v</p>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">ROFL</h5>
+                                    <small>15:40</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Sure vcl :v</p>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">ROFL</h5>
+                                    <small>15:40</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Sure vcl :v</p>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">ROFL</h5>
+                                    <small>15:40</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Sure vcl :v</p>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">ROFL</h5>
+                                    <small>15:40</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Sure vcl :v</p>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">ROFL</h5>
+                                    <small>15:40</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Sure vcl :v</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 d-flex flex-column" id="chat-area">
+                    <div class="" id="mess-person">
+                        <h5>Khanh Phan</h5>
+                    </div>
+                    <div class="d-flex flex-column" id="chat-content">
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>dude lmao</p>
+                        </div>
+                        <div class="chat-receiver justify-content-start">
+                            <p>dude wassup</p>
+                        </div>
+                        <div class="chat-sender justify-content-end">
+                            <p>ayyy</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto" id="send-chat">
+                        <form>
+                            <input type="text" class="form-control" id="send-chat-input" placeholder="Enter your messenge here">
+                            <input class="d-inline-flex" type="file">
+                            <button class="btn btn-primary justify-content-end" type="submit">Send</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
