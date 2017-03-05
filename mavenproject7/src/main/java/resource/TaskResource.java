@@ -26,6 +26,7 @@ import javax.ws.rs.core.Response;
 import model.Notification;
 import model.Task;
 import model.User;
+import socket.WebSocket;
 /**
  *
  * @author N5537
@@ -37,7 +38,7 @@ public class TaskResource {
     //ADD A NEW TASK WITH A FORM
     @POST
     @Path("add")
-    public Response addTask(@FormParam("taskname") String taskname,
+    public void addTask(@FormParam("taskname") String taskname,
             @FormParam("description") String description, @FormParam("startdate") String startdate,
             @FormParam("deadline") String deadline, @FormParam("worker") String worker) throws ParseException{
         //add new task
@@ -55,7 +56,7 @@ public class TaskResource {
         User user = userdao.getByUsername(worker).get(0);
         Notification noti = new Notification(user, task, "add");
         notidao.addNotification(noti);
-        return Response.status(200).build();
+        //return Response.status(200).build();
     }
     
     //EDIT A TASK WITH A FORM

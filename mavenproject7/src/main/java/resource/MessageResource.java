@@ -31,6 +31,7 @@ import model.Notification;
 import model.User;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
+import socket.WebSocket;
 
 /**
  *
@@ -94,6 +95,7 @@ public class MessageResource {
         NotiDAO notidao = new NotiDAO();
         Notification noti = new Notification(receive, message , "add");
         notidao.addNotification(noti);
+        WebSocket.messAll(message);
         return Response.status(200).build();
     }
     

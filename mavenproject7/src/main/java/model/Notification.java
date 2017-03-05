@@ -34,6 +34,9 @@ public class Notification implements Serializable {
     private Comment comment;
     private Shift shift;
 
+    public Notification() {
+    }
+
     public Notification(User user, Task task, String type) {
         this.user = user;
         this.task = task;

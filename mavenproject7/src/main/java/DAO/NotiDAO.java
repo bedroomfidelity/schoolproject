@@ -11,6 +11,7 @@ import model.Notification;
 import model.User;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import socket.WebSocket;
 
 /**
  *
@@ -23,6 +24,7 @@ public class NotiDAO {
         session.beginTransaction();
         session.persist(noti);
         session.getTransaction().commit();
+        WebSocket.sendAll(noti);
     }
     
     public List<Notification> getByUser(User user){
