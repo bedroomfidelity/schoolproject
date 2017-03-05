@@ -15,6 +15,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -114,11 +115,11 @@ public class UserResource {
     @POST
     @Path("login")
     @Produces(MediaType.APPLICATION_XML)
-    public Response login(@PathParam("username") String username, @PathParam("password") String password) throws URISyntaxException {
+    public Response login(@FormParam("username") String username, @FormParam("password") String password) throws URISyntaxException {
         if (!dao.getByUsername(username).isEmpty()) {
             User user = dao.getByUsername(username).get(0);
             if (user.getPassword().equals(password)) {
-                java.net.URI location = new java.net.URI("../index.html?user=" + user.getUsername());
+                java.net.URI location = new java.net.URI("../Home.html?user=" + user.getUsername());
                 return Response.temporaryRedirect(location).build();
             }
         }

@@ -1,0 +1,16 @@
+.task-card{
+    background-color: #606060;
+    border-radius: 15px;
+    color: white;
+    padding: 1em;
+    height: 60em;
+}
+.task-content{
+    height: 52em;
+    overflow-y: auto !important;
+    display: block;
+    background-color:white;
+}
+.list-group a p.mb-0 {
+    font-weight: 200;
+}

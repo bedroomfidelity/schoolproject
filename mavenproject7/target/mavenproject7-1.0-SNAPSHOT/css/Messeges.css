@@ -1,0 +1,106 @@
+ul.mail-list{
+    padding:0;
+    margin:0;
+    list-style:none;
+    margin-top:20px;
+    height: 80%;
+    display: block;
+    overflow-y: scroll;
+    background-color:white;
+}
+ul.mail-list li a{
+    display:block;
+    border-bottom:1px dotted #CFCFCF;
+    padding:10px;
+    text-decoration:none;
+}
+ul.mail-list li:last-child a{
+    border-bottom:none;
+}
+ul.mail-list li a:hover{
+    background-color:#DBF9FF;
+}
+ul.mail-list li span{
+    display:block;
+}
+ul.mail-list li span.mail-sender{
+    font-weight:600;
+    color:#8F8F8F;
+}
+ul.mail-list li span.mail-subject{
+    color:#8C8C8C;
+}
+ul.mail-list li span.mail-message-preview{
+    display:block;
+    color:#A8A8A8;
+}
+span.badge.badge-default{
+    -webkit-border-radius:2rem;
+    -moz-border-radius:2rem;
+    border-radius:2rem;
+    height:1.25rem;
+    width:1.5rem;
+}
+#new-mess-button {
+    width: 100%;
+}
+#new-mess-dropdown form{
+    width: 100%
+}
+#new-mess-dropdown form label {
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+#recent-contact {
+    height: 48em;
+    border-right: groove 1px grey;
+}
+#recent-contact-list {
+    height: 43em;
+    overflow-y:scroll;
+}
+#recent-contact .list-group *.list-group-item {
+}
+#mess-person {
+    border-bottom: groove 1px grey;
+}
+#chat-area {
+    height:48em;
+}
+#chat-content {
+    padding-top: 1rem;
+    height: 43em;
+    overflow-y: auto;
+}
+
+.chat-receiver p{
+    display: block;
+    padding: 2px 1rem;
+    margin:2px;
+    float: left;
+    background: lightgrey;
+    border-radius: 7px;
+}
+.chat-sender p{
+    display: block;
+    padding: 2px 1rem;
+    margin:2px;
+    float: right;
+    border-radius: 15px;
+    background: dodgerblue;
+    color: white;
+    text-align: right;
+}
+#send-chat {
+    border-top: groove 1px grey;
+}
+#send-chat-input {
+    width: 100%;
+}
+#send-chat form button {
+    float:right;
+}
+#contact-info {
+    border-left: groove 1px grey;
+}

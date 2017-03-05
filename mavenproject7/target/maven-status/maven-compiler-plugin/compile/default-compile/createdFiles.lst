@@ -13,7 +13,6 @@ model\Message.class
 Util\StartUp.class
 DAO\ShiftDAO.class
 DAO\TaskDAO.class
-resource\SendMessageWithFile.class
 resource\AppConfig.class
 model\Shift.class
 resource\NotiResource.class
