@@ -14,6 +14,7 @@ Util\StartUp.class
 DAO\ShiftDAO.class
 DAO\TaskDAO.class
 resource\AppConfig.class
+socket\WebSocket.class
 model\Shift.class
 resource\NotiResource.class
 DAO\UserDAO.class
