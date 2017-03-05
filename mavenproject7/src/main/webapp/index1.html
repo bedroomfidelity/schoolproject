@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        
+        <form action="api/user/signup" id="signup" method="post" enctype="multipart/form-data">
+            <span>User Name:</span>
+            <input type="text" name="username" maxlength="20" required>
+            <span>Password:</span>
+            <input type="password" name="password" maxlength="20" required>
+            <span>Title:</span>
+            <input type="text" name="title" maxlength="20" required>
+            <span>First name:</span>
+            <input type="text" name="firstname" maxlength="20" required>
+            <span>Last name:</span>
+            <input type="text" name="lastname" maxlength="20" required>
+            <span>Email:</span>
+            <input type="text" name="email" maxlength="20" required>
+            <span>Phone number:</span>
+            <input type="text" name="phonenumber" maxlength="20" required>
+            <span>Profile picture:</span>
+            <input type="file" name="image" accept="image/*" required>
+            <br/>
+            <button type="submit" class="green-button" name="Submit">Submit</button>
+        </form>
+        
+        <form action="api/task/add" id="addtask" method="post">
+            <span>Task name:</span>
+            <input type="text" name="taskname" maxlength="20" required>
+            <span>Description:</span>
+            <input type="text" name="description" maxlength="20" required>
+            <span>Start date:</span>
+            <input type="datetime-local" name="startdate" required>
+            <span>Deadline:</span>
+            <input type="datetime-local" name="deadline" required>
+            <span>Worker:</span>
+            <input type="text" name="worker" maxlength="20" required>
+            <br/>
+            <button type="submit" class="green-button" name="Submit">Submit</button>
+        </form>
+        
+        <form action="api/message/new" id="sendmessage" method="post" enctype="multipart/form-data">
+            <span>Sender:</span>
+            <input type="text" name="sender" maxlength="20" required>
+            <span>Receiver:</span>
+            <input type="text" name="receiver" maxlength="20" required>
+            <span>Header:</span>
+            <input type="text" name="header" required>
+            <span>Content:</span>
+            <input type="text" name="content" required>
+            <span>File:</span>
+            <input type="file" name="file" required>
+            <br/>
+            <button type="submit" class="green-button" name="Submit">Submit</button>
+        </form>
+        
+    </body>
+</html>
