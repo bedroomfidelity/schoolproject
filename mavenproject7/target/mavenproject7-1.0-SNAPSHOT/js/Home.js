@@ -5,24 +5,24 @@
 var username;
 var req;
 $(document).ready(function(){
-    if(window.location.search != null){
+    console.log(window.location.search);
         var getSearchText = window.location.search.substring(1);
         var uRLParameters = getSearchText.split("&");
         var usernameSearch = uRLParameters[0].split("=");
         username = usernameSearch[1];
+        if (username){
         document.cookie = "uname="+username+";path=/;";
         console.log(username);
         console.log(document.cookie);
-     } else {
+        }
         username = getCookie('uname');
-     }
     websitebuild(username); 
 });
 function websitebuild(username){
     console.log("doingit");
     getProfileTag();
     showTaskList();
-    
+    showMessages();
 }
 function getProfileTag(){
     username = getCookie("uname");
@@ -47,9 +47,11 @@ function showTaskList(){
             var startDate = $(this).find('startdate').text();
             var endDate = $(this).find('deadline').text();
             var description = $(this).find('description').text();
+            var textID = $(this).find('taskID').text();
             var theTask = document.createElement('a');
             theTask.href ="#";
             theTask.className = "list-group-item list-group-item-action flex-column align-items-start";
+            theTask.id = "task" + textID;
             var taskNameAndTimeContainer = document.createElement('div');
             taskNameAndTimeContainer.className = "d-flex w-100 justify-content-between";
             var taskNameContainer = document.createElement('h5');
@@ -66,6 +68,7 @@ function showTaskList(){
             doneButton.className="btn btn-default btn-sm";
             doneButton.type = "button";
             doneButton.name = "done-button";
+            doneButton.onclick = finishTask;
             doneButton.appendChild(document.createTextNode("Done"));
             theTask.appendChild(taskNameAndTimeContainer);
             theTask.appendChild(taskDescription);
@@ -74,6 +77,17 @@ function showTaskList(){
             $("#task-content .list-group").append(theTask);
         });
     });
+    
+}
+function finishTask(){
+    console.log($(this));
+    var taskID = $(this).parent().attr('id').substring(4);
+    console.log(taskID);
+    $.ajax({url:'api/task/done/'+taskID,type:'PUT',success: function(response){
+            console.log(response);
+    }});
+}
+function showMessages(){
     
 }
 function getCookie(cname) {

@@ -131,10 +131,10 @@ public class TaskResource {
     //EDIT A TASK TO "DONE" STATUS
     @PUT
     @Path("done/{taskid}")
-    public Response doneTask(@PathParam("taskid") Long taskid, @FormParam("done") boolean done){
+    public Response doneTask(@PathParam("taskid") Long taskid){
         Task task = dao.getById(taskid).get(0);
-        task.setDone(done);
+        task.setDone(true);
         return Response.status(200).build();
     }
-    
+    //, @FormParam("done") boolean done
 }
