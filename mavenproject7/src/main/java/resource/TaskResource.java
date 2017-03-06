@@ -26,11 +26,8 @@ import javax.ws.rs.core.Response;
 import model.Notification;
 import model.Task;
 import model.User;
-import socket.WebSocket;
-/**
- *
- * @author N5537
- */
+ 
+
 @Path("task")
 public class TaskResource {
     private TaskDAO dao = new TaskDAO();
