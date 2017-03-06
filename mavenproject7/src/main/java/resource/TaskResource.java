@@ -128,6 +128,13 @@ public class TaskResource {
     public List<Task> getByUsernameUndone(@PathParam("username") String username){
         return dao.getTaskByWorkerUndone(username);
     }
+    @GET
+    @Path("complete/{username}")
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Task> getByUsernameDone(@PathParam("username") String username){
+        return dao.getTaskByWorkerDone(username);
+    }
+    
     
     //EDIT A TASK TO "DONE" STATUS
     @PUT
