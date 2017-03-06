@@ -134,12 +134,8 @@ public class TaskResource {
     @Path("done/{taskid}")
     public Response doneTask(@PathParam("taskid") Long taskid){
         Task task = dao.getById(taskid).get(0);
-<<<<<<< HEAD
         task.setDone(true);
-=======
-        task.setDone(done);
         dao.editTask(task);
->>>>>>> refs/remotes/origin/master
         return Response.status(200).build();
     }
     //, @FormParam("done") boolean done

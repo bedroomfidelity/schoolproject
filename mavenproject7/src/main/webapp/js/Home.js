@@ -9,8 +9,9 @@ $(document).ready(function(){
         var getSearchText = window.location.search.substring(1);
         var uRLParameters = getSearchText.split("&");
         var usernameSearch = uRLParameters[0].split("=");
+        var checker = usernameSearch[0];
         username = usernameSearch[1];
-        if (username){
+        if (username && checker=="username"){
         document.cookie = "uname="+username+";path=/;";
         console.log(username);
         console.log(document.cookie);
@@ -80,9 +81,7 @@ function showTaskList(){
     
 }
 function finishTask(){
-    console.log($(this));
     var taskID = $(this).parent().attr('id').substring(4);
-    console.log(taskID);
     $.ajax({url:'api/task/done/'+taskID,type:'PUT',success: function(response){
             console.log(response);
     }});
@@ -91,7 +90,7 @@ function showMessages(){
     
 }
 function getCookie(cname) {
-    var name = cname + "=";
+    var name = cname     + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
     for(var i = 0; i <ca.length; i++) {
@@ -104,4 +103,39 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+function sendFakeForm(){
+    console.log("dude");
+    var fakeForm = $("<form></form>");
+    
+    fakeForm.attr("method","post");
+    fakeForm.attr("action","api/message/new");
+    fakeForm.css("display","none");
+    fakeForm.attr("enctype","multipart/form-data");
+    
+    $("#sendmess").children().each(function(){
+        fakeForm.append($(this));
+    });
+    var field = $('<input></input>');
+    field.attr('type','hidden');
+    field.attr('name','sender');
+    field.attr('value',username);
+    
+    fakeForm.append(field);
+    
+    var field1 = $('<input></input>');
+    field1.attr('type','hidden');
+    field1.attr('name','date');
+    field1.attr('value',$.now());
+    
+    fakeForm.append(field);
+    
+    $(document.body).append(fakeForm);
+    $.ajax({
+        url: 'api/message/new',
+        type: 'post',
+        data: fakeForm,
+        success: console.log("worked")
+    });
+    console.log("dud");
 }

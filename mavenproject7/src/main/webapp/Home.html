@@ -94,20 +94,19 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="task-card" id="sendmess">
+                    <form class="task-card" id="sendmess" onsubmit="sendFakeForm(); return false;">
                         <h3>Send message:</h3>
                         <div class="form-group">
                             <label for="usr">To:</label>
-                            <input type="text" class="form-control" id="usr">
+                            <input type="text" class="form-control" name="receiver" id="usr">
                         </div>
                         <div class="form-group">
                             <label for="message">Message:</label>
-                            <textarea class="form-control" rows="5" id="message"></textarea>
+                            <textarea class="form-control" rows="5" name="content" id="message"></textarea>
                         </div>
-                        <a href="#">
-                            Add Files</a>
-                        <button type="button" class="btn btn-primary btn-sm" name="send-button">Send</button>
-                    </div>
+                        <input type="file" name="file"/>
+                        <button type="submit" class="btn btn-primary btn-sm" name="send-button">Send</button>
+                    </form>
                 </div>
             </div>
         </div>
