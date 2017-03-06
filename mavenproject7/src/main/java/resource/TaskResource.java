@@ -26,11 +26,12 @@ import javax.ws.rs.core.Response;
 import model.Notification;
 import model.Task;
 import model.User;
-import socket.WebSocket;
 /**
  *
  * @author N5537
  */
+ 
+
 @Path("task")
 public class TaskResource {
     private TaskDAO dao = new TaskDAO();
@@ -133,7 +134,12 @@ public class TaskResource {
     @Path("done/{taskid}")
     public Response doneTask(@PathParam("taskid") Long taskid){
         Task task = dao.getById(taskid).get(0);
+<<<<<<< HEAD
         task.setDone(true);
+=======
+        task.setDone(done);
+        dao.editTask(task);
+>>>>>>> refs/remotes/origin/master
         return Response.status(200).build();
     }
     //, @FormParam("done") boolean done
