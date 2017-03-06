@@ -8,7 +8,6 @@ package socket;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.websocket.OnClose;
-import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
@@ -44,6 +43,7 @@ public class WebSocket {
         }
     }
     
+    /*
     public static void messAll(Message mess) {
         synchronized (SESSIONS) {
             for (Session session : SESSIONS) {
@@ -52,5 +52,5 @@ public class WebSocket {
                 }
             }
         }
-    }
+    }*/
 }
