@@ -26,15 +26,12 @@ import javax.ws.rs.core.Response;
 import model.Notification;
 import model.Task;
 import model.User;
-<<<<<<< HEAD
 /**
  *
  * @author N5537
  */
-=======
  
 
->>>>>>> thanh_branch
 @Path("task")
 public class TaskResource {
     private TaskDAO dao = new TaskDAO();
