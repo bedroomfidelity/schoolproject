@@ -81,15 +81,15 @@ public class UserResource {
     @PUT
     @Path("edit")
     public Response editUser(@FormDataParam("username") String username, @FormDataParam("password") String password,
-            @FormDataParam("title") String title, @FormDataParam("email") String email,
+            @FormDataParam("email") String email, @FormDataParam("phonenumber") String phoneNumber,
             @FormDataParam("firstname") String firstname, @FormDataParam("lastname") String lastname,
-            @FormDataParam("address") String address, @FormDataParam("newUsername") String newUsername,
+            @FormDataParam("address") String address,
             @FormDataParam("image") InputStream image, @FormDataParam("image") FormDataContentDisposition imageDetail) {
         User user = dao.getByUsername(username).get(0);
         user.setAddress(address);
-        user.setUsername(newUsername);
-        user.setTitle(title);
-        user.setPhoneNumber(lastname);
+        //user.setUsername(newUsername);
+        //user.setTitle(title);
+        user.setPhoneNumber(phoneNumber);
         user.setPassword(password);
         user.setFirstname(firstname);
         user.setLastname(lastname);
