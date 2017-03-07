@@ -1,13 +1,46 @@
 .input-xlarge{
-    width: 50%;
+    width: 90%;
     border-radius: 5px;
 }
 .form-horizontal{
-    margin-left: 350px;
-    margin-top: 100px;
+    margin-left: 90px;
+    margin-top: 20px;
+    padding-bottom: 10px;
 }
 #button{
     background-color: #1A2930;
     border-color: #1A2930;
     margin-top: 10px;
+}
+.control-label{
+    color: black;
+}
+.task-card{
+    background-color: #606060;
+    border-radius: 15px;
+    color: white;
+    padding: 1em;
+    height: 60em;
+}
+.task-content{
+    height: 52em;
+    overflow-y: auto !important;
+    display: block;
+    background-color:white;
+}
+.list-group a p.mb-0 {
+    font-weight: 200;
+}
+.task-card-1{
+    background-color: #606060;
+    border-radius: 15px;
+    color: white;
+    padding: 1em;
+    height: 39em;
+}
+.task-content-1{
+    height: 35em;
+    overflow-y: auto !important;
+    display: block;
+    background-color:white;
 }

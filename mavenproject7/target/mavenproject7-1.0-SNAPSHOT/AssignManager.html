@@ -38,7 +38,7 @@
             <li class="list-group-item"><a href="#">Task Assignment</a></li>
             <li class="list-group-item"><a href="MessegesManager.html">Messages</a></li>
             <li class="list-group-item"><a href="Register.html">Register</a></li>
-
+            <li class="list-group-item"><a href="ManagerTask.html">Task</a></li>
         </ul>
     </div>
     <div id="all-content">
@@ -48,14 +48,21 @@
                 <div id="legend">
                     <h3 class="newr">Assign new task</h3>
                 </div>
-                <div class="control-group">
+                <br><div class="control-group">
 
-                    <label class="control-label"  for="username">Task</label>
+                    <label class="control-label"  for="task">Task Title</label>
                     <div class="controls">
-                        <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                        <input type="text" id="task" name="task" placeholder="" class="input-xlarge">
                     </div>
                 </div>
+                <div class="control-group">
 
+                    <label class="control-label" for="email">Task Description</label>
+                    <div class="controls">
+                        <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+
+                    </div>
+                </div>
                 <div class="control-group">
 
                     <label class="control-label" for="email">Responsible Team</label>
@@ -67,9 +74,9 @@
 
                 <div class="control-group">
 
-                    <label class="control-label" for="password">Date</label>
+                    <label class="control-label" for="date">Date</label>
                     <div class="controls">
-                        <input type="date" id="password" name="password" placeholder="" class="input-xlarge">
+                        <input type="date" id="date" name="date" placeholder="" class="input-xlarge">
 
                     </div>
                 </div>
@@ -82,7 +89,14 @@
 
                     </div>
                 </div>
+                <div class="control-group">
 
+                    <label class="control-label" for="email">Deadline</label>
+                    <div class="controls">
+                        <input type="datetime-local" id="dt" name="dt" placeholder="" class="input-xlarge">
+
+                    </div>
+                </div>
                 <div class="control-group">
 
                     <div class="controls">

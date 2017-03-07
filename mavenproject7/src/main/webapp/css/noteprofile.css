@@ -1,16 +1,18 @@
 
 .profile-picture{
-    height: 50px;
-    width: 300px;
+    height: auto;
+    max-width: 100%;
+    width: auto;
     margin-left: 300px;
     margin-top: 70px;
 }
 
 #button{
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 50px;
     background-color: #1A2930;
     border-color: #1A2930;
+
 }
 .table-user-information > tbody > tr {
     border-top: 1px solid rgb(221, 221, 221);
@@ -29,9 +31,13 @@
     margin-top: 30px;
 }
 .bio{
-    margin-left: 310px;
+    margin-left: 110px;
 }
 .nav-link{
     margin-top: 20px;
     margin-left: 90px;
 }
+.iphoto{
+    padding-top: 10px;
+}
+

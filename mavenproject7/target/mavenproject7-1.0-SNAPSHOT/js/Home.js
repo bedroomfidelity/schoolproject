@@ -11,11 +11,12 @@ $(document).ready(function(){
         var usernameSearch = uRLParameters[0].split("=");
         var checker = usernameSearch[0];
         username = usernameSearch[1];
-        if (username && checker=="username"){
+        if (username && checker=="user"){
         document.cookie = "uname="+username+";path=/;";
         console.log(username);
         console.log(document.cookie);
         }
+        console.log(document.cookie);
         username = getCookie('uname');
     websitebuild(); 
 });
