@@ -129,6 +129,22 @@ public class TaskResource {
         return dao.getTaskByWorkerUndone(username);
     }
     
+    //GET ALL TASKS UNDONE IN THE DATABASE
+    @GET
+    @Path("undone")
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Task> getUndone(){
+        return dao.getByDone(false);
+    }
+    
+    @GET
+    @Path("complete/{username}")
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Task> getByUsernameDone(@PathParam("username") String username){
+        return dao.getTaskByWorkerDone(username);
+    }
+    
+    
     //EDIT A TASK TO "DONE" STATUS
     @PUT
     @Path("done/{taskid}")

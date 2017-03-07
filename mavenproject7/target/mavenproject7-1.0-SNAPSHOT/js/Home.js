@@ -17,9 +17,9 @@ $(document).ready(function(){
         console.log(document.cookie);
         }
         username = getCookie('uname');
-    websitebuild(username); 
+    websitebuild(); 
 });
-function websitebuild(username){
+function websitebuild(){
     console.log("doingit");
     getProfileTag();
     showTaskList();
@@ -74,7 +74,6 @@ function showTaskList(){
             theTask.appendChild(taskNameAndTimeContainer);
             theTask.appendChild(taskDescription);
             theTask.appendChild(doneButton);
-            console.log(theTask);
             $("#task-content .list-group").append(theTask);
         });
     });
@@ -106,6 +105,7 @@ function getCookie(cname) {
 }
 function sendFakeForm(){
     console.log("dude");
+    console.log($.now());
     var fakeForm = $("<form></form>");
     
     fakeForm.attr("method","post");
@@ -114,7 +114,9 @@ function sendFakeForm(){
     fakeForm.attr("enctype","multipart/form-data");
     
     $("#sendmess").children().each(function(){
-        fakeForm.append($(this));
+        console.log($(this).clone());
+        var dummy = $(this).clone();
+        fakeForm.append(dummy);
     });
     var field = $('<input></input>');
     field.attr('type','hidden');
@@ -131,11 +133,7 @@ function sendFakeForm(){
     fakeForm.append(field);
     
     $(document.body).append(fakeForm);
-    $.ajax({
-        url: 'api/message/new',
-        type: 'post',
-        data: fakeForm,
-        success: console.log("worked")
-    });
+    fakeForm.submit();
     console.log("dud");
+    return false;
 }
