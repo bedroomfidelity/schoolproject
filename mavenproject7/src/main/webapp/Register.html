@@ -43,7 +43,7 @@
         </ul>
     </div>
     <div id="all-content">
-            <form class="form-horizontal" action='api/user/signup' method="POST">
+            <form class="form-horizontal" enctype="multipart/form-data" action='api/user/signup' method="POST">
                 <fieldset>
                     <div id="legend">
                         <h3 class="newr">New Register</h3>
@@ -92,7 +92,7 @@
 
                     <label class="control-label"  for="phonenumber">Phone Number</label>
                     <div class="controls">
-                        <input type="number" id="phonenumber" name="phonenumber" placeholder="" class="input-xlarge">
+                        <input type="text" id="phonenumber" name="phonenumber" placeholder="" class="input-xlarge">
 
                     </div>
                 </div>

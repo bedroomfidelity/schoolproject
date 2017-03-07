@@ -41,7 +41,7 @@ public class UserResource {
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("signup")
-    public Response signUp(@FormDataParam("username") String username, @FormDataParam("password") String password,
+    public void signUp(@FormDataParam("username") String username, @FormDataParam("password") String password,
             @FormDataParam("title") String title, @FormDataParam("email") String email,
             @FormDataParam("firstname") String firstname, @FormDataParam("lastname") String lastname,
             @FormDataParam("address") String address, @FormDataParam("phonenumber") String phonenumber,
@@ -52,9 +52,9 @@ public class UserResource {
             User user = new User(username, password, title, email,
                     phonenumber, firstname, lastname, address, imageDetail.getFileName());
             dao.addUser(user);
-            return Response.status(200).build();
+            //return Response.status(200).build();
         } else {
-            return Response.noContent().build();
+            //return Response.noContent().build();
         }
     }
     
