@@ -7,6 +7,7 @@
 $(document).ready(function(){
    username = getCookie("uname");
    websitebuild();
+   console.log($.now());
 });
 function websitebuild(){
     showTaskList();
