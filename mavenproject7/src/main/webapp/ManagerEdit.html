@@ -24,7 +24,7 @@
         <div class="dropdown" id="profile-tag">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="pic/profile-picture.png" alt="profile picture">
-                <p class="name">Khanh Phan</p>
+                <p id="userid" class="name">Khanh Phan</p>
             </a>
             <div class="dropdown-menu">
                 <a href="ManagerProfile.html">My Profile</a>
@@ -43,7 +43,7 @@
 </div>
     <div id="all-content">
         <div class="row">
-            <form action="" method="" 
+            <form action="api/user/edit" method="POST" , enctype="multipart/form-data">
             <div class="profile-picture">
                 <img src="http://vignette1.wikia.nocookie.net/sims/images/3/33/John_Doe.png/revision/latest?cb=20131001222124"  alt="" class="img-thumbnail pull-xs-left">
                 <br><input class="iphoto" type="file" name="image">
@@ -53,6 +53,14 @@
                 <h4 class="bio">BIO</h4>
                 <table class="table table-user-information">
                     <tbody>
+                    <tr>
+                        <td>Username:</td>
+                        <td><input id="readonlyusername" type="text" name="username" readonly><td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" name="password"><td>
+                    </tr>
                     <tr>
                         <td>First name:</td>
                         <td><input type="text" name="firstname"><td>
@@ -70,15 +78,18 @@
                         <td><input type="text" name="email"></td>
                     </tr>
                         <td>Phone Number:</td>
-                        <td><input type="texr" name="phonenumber"></td>
+                        <td><input type="text" name="phonenumber"></td>
 
                     </tr>
-
+                    </tr>
+                    <td><button type="submit">Edit</button></td>
+                    </tr>
                     </tbody>
                 </table>
-                <a class="nav-link active" href="#">Edit profile</a>
+                
 
             </div>
+            </form>
         </div>
     </div>
 </div>

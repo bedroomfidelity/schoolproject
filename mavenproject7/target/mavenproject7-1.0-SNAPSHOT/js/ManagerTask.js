@@ -62,3 +62,18 @@ function getCookie(cname) {
     }
     return "";
 }
+function notibox(){
+    var dummy = document.getElementById('worker').value;
+    console.log(dummy);
+    $.get("api/user/getbyname/"+dummy,function(data){
+        $xml = $(data);
+        $user = $xml.find("username").text();
+        console.log($user);
+        if($user == dummy ){
+        $('#button').prop('disabled',false);
+    } else {
+       $('#button').prop('disabled',true);
+    }
+    });
+    
+}

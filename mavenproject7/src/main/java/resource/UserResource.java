@@ -85,9 +85,9 @@ public class UserResource {
     }
     
     //EDIT AN USER INFORMATION WITH A MULTIPART FORM
-    @PUT
+    @POST
     @Path("edit")
-    public Response editUser(@FormDataParam("username") String username, @FormDataParam("password") String password,
+    public void editUser(@FormDataParam("username") String username, @FormDataParam("password") String password,
             @FormDataParam("email") String email, @FormDataParam("phonenumber") String phoneNumber,
             @FormDataParam("firstname") String firstname, @FormDataParam("lastname") String lastname,
             @FormDataParam("address") String address,
@@ -101,14 +101,16 @@ public class UserResource {
         user.setFirstname(firstname);
         user.setLastname(lastname);
         user.setEmail(email);
-        File file = new File("d:/server/images/"+user.getImage());
-        if (file.delete()){
-            writeFile("d:/server/images/"+imageDetail.getFileName(), image);
-            user.setImage(imageDetail.getFileName());
-            dao.editUser(user);
+        if (image!=null){
+            File file = new File("d:/server/images/"+user.getImage());         
+                if (file.delete()){
+                writeFile("d:/server/images/"+imageDetail.getFileName(), image);
+                user.setImage(imageDetail.getFileName());
+                }
         }
-        return Response.status(200).build();
-    }
+        dao.editUser(user);
+        //return Response.status(200).build();
+        }
     
     //GET USER BY USERNAME
     @GET

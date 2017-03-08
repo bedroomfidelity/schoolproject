@@ -16,6 +16,7 @@ $(document).ready(function(){
     } else {
         username = getCookie('uname');
     }
+    getProfileTag();
 });
 function getCookie(cname) {
     var name = cname     + "=";
@@ -32,4 +33,15 @@ function getCookie(cname) {
     }
     return "";
 }
-
+function getProfileTag(){
+    username = getCookie("uname");
+    console.log(username);
+    $.get("api/user/getbyname/"+username,function(data){
+        $xml=$(data);
+        $firstname = $xml.find("firstname");
+        $lastname = $xml.find("lastname");
+        var fullName = $firstname.text() + " " + $lastname.text();
+        console.log(fullName);
+        $("#userid").html(fullName);
+    });
+}

@@ -9,9 +9,22 @@ $(document).ready(function(){
    username = getCookie("uname");
    websitebuild();
 });
+function getProfileTag(){
+    username = getCookie("uname");
+    console.log(username);
+    $.get("api/user/getbyname/"+username,function(data){
+        $xml=$(data);
+        $firstname = $xml.find("firstname");
+        $lastname = $xml.find("lastname");
+        var fullName = $firstname.text() + " " + $lastname.text();
+        console.log(fullName);
+        $("#userid").html(fullName);
+    });
+}
 function websitebuild(){
     showTaskList();
     showFinishedTaskList();
+    getProfileTag();
 }
 function showTaskList(){
     username = getCookie("uname");

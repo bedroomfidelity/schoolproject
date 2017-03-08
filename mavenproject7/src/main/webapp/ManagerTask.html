@@ -20,7 +20,7 @@
         <div class="dropdown" id="profile-tag">
             <a href="#" data-toggle="dropdown">
                 <img src="pic/profile-picture.png" alt="profile picture">
-                <p>Khanh Phan</p>
+                <p id="userid">Khanh Phan</p>
             </a>
             <div class="dropdown-menu">
                 <a href="ManagerProfile.html">My Profile</a>
@@ -163,7 +163,7 @@
 
                                         <label class="control-label" for="worker">Responsible Worker</label>
                                         <div class="controls">
-                                            <input type="text" id="worker" name="worker" placeholder="" class="input-xlarge">
+                                            <input type="text" id="worker" name="worker" placeholder="" class="input-xlarge" onkeyup="notibox();">
 
                                         </div>
                                     </div>
@@ -188,7 +188,7 @@
                                     <div class="control-group">
 
                                         <div class="controls">
-                                            <br><button class="btn btn-primary" id="button" name="submit">Done</button>
+                                            <br><button disabled class="btn btn-primary" id="button" name="submit">Done</button>
                                         </div>
                                     </div>
                                 </fieldset>

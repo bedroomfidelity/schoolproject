@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+var username;
 $(document).ready(function(){
    username = getCookie("uname");
    getProfileTag();
    websitebuild();
 });
 function websitebuild(){
-    
+    $("#readonlyusername").val(username);
 }
 function getProfileTag(){
     username = getCookie("uname");
