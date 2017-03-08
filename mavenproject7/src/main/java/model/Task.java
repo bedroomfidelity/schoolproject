@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Type;
 
 /**
  *
@@ -36,8 +38,8 @@ public class Task implements Serializable {
     private Long taskID;
     private String taskname;
     private String description;
-    private Date startdate;
-    private Date deadline;
+    private Timestamp startdate;
+    private Timestamp deadline;
     private boolean done;
     private List<User> workers;
     private List<Comment> comments;
@@ -46,7 +48,7 @@ public class Task implements Serializable {
     public Task() {
     }
 
-    public Task(String taskname, String description, Date startdate, Date deadline, boolean done) {
+    public Task(String taskname, String description, Timestamp startdate, Timestamp deadline, boolean done) {
         this.taskname = taskname;
         this.description = description;
         this.startdate = startdate;
@@ -88,25 +90,27 @@ public class Task implements Serializable {
         this.description = description;
     }
 
-    @Temporal(TemporalType.TIME)
+    //@Temporal(TemporalType.TIMESTAMP)
+    @Type(type = "timestamp")
     @Column(name = "startdate", nullable = false)
     @XmlElement
-    public Date getStartdate() {
+    public Timestamp getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(Date startdate) {
+    public void setStartdate(Timestamp startdate) {
         this.startdate = startdate;
     }
 
-    @Temporal(TemporalType.TIME)
+    //@Temporal(TemporalType.TIMESTAMP)
+    @Type(type = "timestamp")
     @Column(name = "deadline", nullable = false)
     @XmlElement
-    public Date getDeadline() {
+    public Timestamp getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(Timestamp deadline) {
         this.deadline = deadline;
     }
 
