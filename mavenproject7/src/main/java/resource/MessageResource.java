@@ -73,7 +73,7 @@ public class MessageResource {
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("new")
-    public Response addMessage(@FormDataParam("sender") String sender,
+    public void addMessage(@FormDataParam("sender") String sender,
             @FormDataParam("receiver") String receiver, @FormDataParam("content") String content,
             @FormDataParam("date") String date, @FormDataParam("file") InputStream file,
             @FormDataParam("file") FormDataContentDisposition fileDetail) {
@@ -93,7 +93,7 @@ public class MessageResource {
         NotiDAO notidao = new NotiDAO();
         Notification noti = new Notification(receive, message , "add");
         notidao.addNotification(noti);
-        return Response.status(200).build();
+        //return Response.status(200).build();
     }
     
     //WRITE THE FILE (IF INCLUDED IN THE FORM) TO THE SERVER

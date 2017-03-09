@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link href="css/web.css" rel="stylesheet" type="text/css"/>
+    <link href="css/noteprofile.css" rel="stylesheet" type="text/css"/>
+    <script src="js/Profile.js" type="text/javascript"></script>
+</head>
+<body id="main">
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="banner">
+        <a href="ManagerHome.html">
+            <img src="pic/icon.png" alt="logohere">
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="dropdown" id="profile-tag">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="pic/profile-picture.png" alt="profile picture">
+                <p id="userid" class="name">Khanh Phan</p>
+            </a>
+            <div class="dropdown-menu">
+                <a href="ManagerProfile.html">My Profile</a>
+                <br>
+                <a href="index.html">Log out</a>
+            </div>
+        </div>
+    </div>
+<div id="sidebar">
+    <ul class="list-group" id="menu">
+        <li class="list-group-item"><a href="ManagerHome.html">Home</a></li>
+        <li class="list-group-item"><a href="MessegesManager.html">Messages</a></li>
+        <li class="list-group-item"><a href="Register.html">Register</a></li>
+        <li class="list-group-item"><a href="ManagerTask.html">Task</a></li>
+    </ul>
+</div>
+<div id="all-content">
+    <div class="row">
+        <div class="profile-picture">
+            <img src="http://vignette1.wikia.nocookie.net/sims/images/3/33/John_Doe.png/revision/latest?cb=20131001222124"  alt="" class="img-thumbnail pull-xs-left">
+
+        </div>
+
+        <div class=" col-md-4 col-lg-4 col-xs-4 ">
+            <h4 class="bio">BIO</h4>
+            <table class="table table-user-information">
+                <tbody>
+                <tr>
+                    <td>First name:</td>
+                    <td id="fname">John</td>
+                </tr>
+                <tr>
+                    <td>Last name:</td>
+                    <td id="lname">Doe</td>
+                </tr>
+                <tr>
+                    <td>Username:</td>
+                    <td id="uname">doejohn</td>
+                </tr>
+                <tr>
+                    <td>Job title:</td>
+                    <td id="job">Sales</td>
+                </tr>
+                <tr>
+                    <td>Date of Birth:</td>
+                    <td id="dob">01/24/1988</td>
+                </tr>
+                <tr>
+                    <td>Home Address:</td>
+                    <td id="hadd">Helsinki</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td id="mail"><a href="mailto:johndoe@ikea.com">johndoe@ikea.com</a></td>
+                </tr>
+                <td>Phone Number:</td>
+                <td id="pnumber">123-4567-890(Department)<br><br>555-4567-890(Mobile)</td>
+
+                </tr>
+
+                </tbody>
+            </table>
+            <a class="nav-link active" href="ManagerEdit.html">Edit profile</a>
+
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

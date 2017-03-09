@@ -9,6 +9,7 @@ import DAO.NotiDAO;
 import DAO.TaskDAO;
 import DAO.UserDAO;
 import DAO.UserTaskDAO;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,6 +27,10 @@ import javax.ws.rs.core.Response;
 import model.Notification;
 import model.Task;
 import model.User;
+/**
+ *
+ * @author N5537
+ */
  
 
 @Path("task")
@@ -39,9 +44,9 @@ public class TaskResource {
             @FormParam("description") String description, @FormParam("startdate") String startdate,
             @FormParam("deadline") String deadline, @FormParam("worker") String worker) throws ParseException{
         //add new task
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-        Date start = format.parse(startdate);
-        Date end = format.parse(deadline);
+        //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        Timestamp start = convertTime(startdate);
+        Timestamp end = convertTime(deadline);
         Task task = new Task(taskname, description, start, end, false);
         dao.addTask(task);
         //add new task ralationship with user
@@ -60,8 +65,8 @@ public class TaskResource {
     @PUT
     @Path("edit")
     public Response editTask(@FormParam("taskid") Long taskid, @FormParam("taskname") String taskname,
-            @FormParam("description") String description, @FormParam("startdate") Date startdate,
-            @FormParam("deadline") Date deadline, @FormParam("done") boolean done){
+            @FormParam("description") String description, @FormParam("startdate") Timestamp startdate,
+            @FormParam("deadline") Timestamp deadline, @FormParam("done") boolean done){
         //get the task
         Task task = dao.getById(taskid).get(0);
         //edit task information
@@ -125,14 +130,35 @@ public class TaskResource {
         return dao.getTaskByWorkerUndone(username);
     }
     
+    //GET ALL TASKS UNDONE IN THE DATABASE
+    @GET
+    @Path("undone")
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Task> getUndone(){
+        return dao.getByDone(false);
+    }
+    
+    @GET
+    @Path("complete/{username}")
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Task> getByUsernameDone(@PathParam("username") String username){
+        return dao.getTaskByWorkerDone(username);
+    }
+    
+    
     //EDIT A TASK TO "DONE" STATUS
     @PUT
     @Path("done/{taskid}")
-    public Response doneTask(@PathParam("taskid") Long taskid, @FormParam("done") boolean done){
+    public Response doneTask(@PathParam("taskid") Long taskid){
         Task task = dao.getById(taskid).get(0);
-        task.setDone(done);
+        task.setDone(true);
         dao.editTask(task);
         return Response.status(200).build();
     }
     
+    public Timestamp convertTime(String datetimelocal){
+        datetimelocal+=":00";
+        Timestamp value = Timestamp.valueOf(datetimelocal.replace("T", " "));
+        return value;
+    }
 }

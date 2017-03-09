@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link href="css/web.css" rel="stylesheet" type="text/css"/>
+    <link href="css/Assignment.css" rel="stylesheet" type="text/css"/>
+    <script src="js/ManagerTask.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="main">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="banner">
+        <img src="pic/icon.png" alt="logohere">
+        <div class="dropdown" id="profile-tag">
+            <a href="#" data-toggle="dropdown">
+                <img src="pic/profile-picture.png" alt="profile picture">
+                <p id="userid">Khanh Phan</p>
+            </a>
+            <div class="dropdown-menu">
+                <a href="ManagerProfile.html">My Profile</a>
+                <br>
+                <a href="index.html">Log out</a>
+            </div>
+        </div>
+    </div>
+    <div id="sidebar">
+        <ul class="list-group" id="menu">
+            <li class="list-group-item"><a href="ManagerHome.html">Home</a></li>
+            <li class="list-group-item"><a href="MessegesManager.html">Messages</a></li>
+            <li class="list-group-item"><a href="Register.html">Register</a></li>
+            <li class="list-group-item"><a href="ManagerTask.html">Task</a></li>
+        </ul>
+    </div>
+    <div id="all-content">
+        <div class="row" id="content">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="tasklist">
+                <div class="task-card">
+                    <h3>Task List</h3>
+
+                    <div class="task-content">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Refill the shelves</h5>
+                                    <small>15:00-18:00 - 23th Feb 2017</small>
+                                </div>
+                                <p class="mb-1">Reminder for Stand 1st team</p>
+                                <p class="mb-0">Done at 16:00 - 23th Feb 2017 </p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <p class="mb-0">Done at 16:00 - 23th Feb 2017 </p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <p class="mb-0">Done at 16:00 - 23th Feb 2017 </p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <p class="mb-0">Done at 16:00 - 23th Feb 2017 </p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <p class="mb-0">Done at 16:00 - 23th Feb 2017 </p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <p class="mb-0">Done at 16:00 - 23th Feb 2017 </p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <p class="mb-0">Done at 16:00 - 23th Feb 2017 </p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <p class="mb-0">Done at 16:00 - 23th Feb 2017 </p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <p class="mb-0">Done at 16:00 - 23th Feb 2017 </p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small class="text-muted">3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <p class="mb-0">Done at 16:00 - 23th Feb 2017 </p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small class="text-muted">3 days ago</small>
+                                </div>
+                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                <p class="mb-0">Done at 16:00 - 23th Feb 2017 </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="new-task-list">
+                <div class="task-card-1">
+                    <h3>Assign new task</h3>
+                    <div class="task-content-1">
+                        <div class="list-group">
+                            <form class="form-horizontal" action='api/task/add' method="POST">
+                                <fieldset>
+                                    <br><div class="control-group">
+
+                                    <label class="control-label" for="taskname">Task Title</label>
+                                    <div class="controls">
+                                        <input type="text" id="taskname" name="taskname" placeholder="" class="input-xlarge">
+                                    </div>
+                                </div>
+                                    <div class="control-group">
+
+                                        <label class="control-label" for="description">Task Description</label>
+                                        <div class="controls">
+                                            <input type="text" id="description" name="description" placeholder="" class="input-xlarge">
+
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+
+                                        <label class="control-label" for="worker">Responsible Worker</label>
+                                        <div class="controls">
+                                            <input type="text" id="worker" name="worker" placeholder="" class="input-xlarge" onkeyup="notibox();">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+
+                                        <label class="control-label" for="startdate">Date</label>
+                                        <div class="controls">
+                                            <input type="datetime-local" id="startdate" name="startdate" placeholder="" class="input-xlarge">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+
+                                        <label class="control-label" for="deadline">Deadline</label>
+                                        <div class="controls">
+                                            <input type="datetime-local" id="deadline" name="deadline" placeholder="" class="input-xlarge">
+
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+
+                                        <div class="controls">
+                                            <br><button disabled class="btn btn-primary" id="button" name="submit">Done</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

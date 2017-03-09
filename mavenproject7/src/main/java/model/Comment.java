@@ -81,7 +81,7 @@ public class Comment implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "onTask", referencedColumnName = "taskname", nullable = false)
+    @JoinColumn(name = "onTask", referencedColumnName = "taskID", nullable = false)
     @XmlElement
     public Task getOnTask() {
         return onTask;

@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Type;
 
 /**
  *
@@ -88,7 +90,8 @@ public class Task implements Serializable {
         this.description = description;
     }
 
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
+    //@Type(type = "timestamp")
     @Column(name = "startdate", nullable = false)
     @XmlElement
     public Date getStartdate() {
@@ -99,7 +102,8 @@ public class Task implements Serializable {
         this.startdate = startdate;
     }
 
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
+    //@Type(type = "timestamp")
     @Column(name = "deadline", nullable = false)
     @XmlElement
     public Date getDeadline() {

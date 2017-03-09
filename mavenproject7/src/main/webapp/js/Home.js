@@ -2,60 +2,139 @@
 /**
  * Created by Khanh on 3/4/2017.
  */
-
 var username;
 var req;
 $(document).ready(function(){
-    var getSearchText = window.location.search.substring(1);
-    var uRLParameters = getSearchText.split("&");
-    var usernameSearch = uRLParameters[0].split("=");
-    username = usernameSearch[1];
-    console.log(username);
-    websitebuild(username); 
-});
-function websitebuild(username){
-    console.log("doingit")
-    eventHandler("GET","user/getbyname/"+username);
-    $('#sidebar-home').attr('href','Home.html?user='+username);
-    $('#sidebar-task').attr('href','Task.html?user='+username);
-    $('#sidebar-message').attr('href','Messages.html?user='+username);
-    $('#sidebar-calendar').attr('href','Calendar.html?user='+username);
-    console.log($('#sidebar-home').attr('href'));
-}
-function initRequest() {
-    if (window.XMLHttpRequest) {
-        if (navigator.userAgent.indexOf('MSIE') != -1) {
-            isIE = true;
+    console.log(window.location.search);
+        var getSearchText = window.location.search.substring(1);
+        var uRLParameters = getSearchText.split("&");
+        var usernameSearch = uRLParameters[0].split("=");
+        var checker = usernameSearch[0];
+        username = usernameSearch[1];
+        if (username && checker=="user"){
+        document.cookie = "uname="+username+";path=/;";
+        console.log(username);
+        console.log(document.cookie);
         }
-        return new XMLHttpRequest();
-    } else if (window.ActiveXObject) {
-        isIE = true;
-        return new ActiveXObject("Microsoft.XMLHTTP");
-    }
+        console.log(document.cookie);
+        username = getCookie('uname');
+    websitebuild(); 
+});
+function websitebuild(){
+    console.log("doingit");
+    getProfileTag();
+    showTaskList();
+    showMessages();
 }
-function eventHandler(method,actionname){
-    var url = "api/" + actionname;
-    console.log(url);
-    req = initRequest();
-    req.open(method, url, true);
-    req.onreadystatechange = callback;
-    req.send(null);
+function getProfileTag(){
+    username = getCookie("uname");
+    console.log(username);
+    $.get("api/user/getbyname/"+username,function(data){
+        $xml=$(data);
+        $firstname = $xml.find("firstname");
+        $lastname = $xml.find("lastname");
+        var fullName = $firstname.text() + " " + $lastname.text();
+        console.log(fullName);
+        $("#userid").html(fullName);
+    });
+}
+function showTaskList(){
+    username = getCookie("uname");
+    console.log(username);
+    $.get("api/task/undone/"+username,function(data){
+        console.log(data);
+        $xml=$(data);
+        $tasks = $xml.find("task").each(function(index){
+            var taskName = $(this).find('taskname').text();
+            var startDate = $(this).find('startdate').text();
+            var endDate = $(this).find('deadline').text();
+            var description = $(this).find('description').text();
+            var textID = $(this).find('taskID').text();
+            var theTask = document.createElement('a');
+            theTask.href ="#";
+            theTask.className = "list-group-item list-group-item-action flex-column align-items-start";
+            theTask.id = "task" + textID;
+            var taskNameAndTimeContainer = document.createElement('div');
+            taskNameAndTimeContainer.className = "d-flex w-100 justify-content-between";
+            var taskNameContainer = document.createElement('h5');
+            taskNameContainer.className ="mb-1";
+            taskNameContainer.appendChild(document.createTextNode(taskName));
+            var timeContainer = document.createElement('small');
+            timeContainer.appendChild(document.createTextNode(startDate+"-"+endDate));
+            taskNameAndTimeContainer.appendChild(taskNameContainer);
+            taskNameAndTimeContainer.appendChild(timeContainer);
+            var taskDescription = document.createElement('p');
+            taskDescription.className="mb-1";
+            taskDescription.appendChild(document.createTextNode(description));
+            var doneButton = document.createElement('button');
+            doneButton.className="btn btn-default btn-sm";
+            doneButton.type = "button";
+            doneButton.name = "done-button";
+            doneButton.onclick = finishTask;
+            doneButton.appendChild(document.createTextNode("Done"));
+            theTask.appendChild(taskNameAndTimeContainer);
+            theTask.appendChild(taskDescription);
+            theTask.appendChild(doneButton);
+            $("#task-content .list-group").append(theTask);
+        });
+    });
     
 }
-function callback(){
-    if (req.readyState == 4) {
-        if (req.status == 200) {
-            parseMesseges(req.responseXML);
+function finishTask(){
+    var taskID = $(this).parent().attr('id').substring(4);
+    $.ajax({url:'api/task/done/'+taskID,type:'PUT',success: function(response){
+            console.log(response);
+    }});
+}
+function showMessages(){
+    
+}
+function getCookie(cname) {
+    var name = cname     + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
         }
     }
+    return "";
 }
-function parseMesseges(responseXML){
-   
-    $xml =$(responseXML);
-    console.log(responseXML);
-    $firstName = $xml.find("firstname");
-    $lastName = $xml.find("lastname");
-    var returnText = $firstName.text() + " " + $lastName.text();
-        console.log(returnText);
-    $("#profile-tag a p").html(returnText);
+function sendFakeForm(){
+    console.log("dude");
+    console.log($.now());
+    var fakeForm = $("<form></form>");
+    
+    fakeForm.attr("method","post");
+    fakeForm.attr("action","api/message/new");
+    fakeForm.css("display","none");
+    fakeForm.attr("enctype","multipart/form-data");
+    
+    $("#sendmess").children().each(function(){
+        console.log($(this).clone());
+        var dummy = $(this).clone();
+        fakeForm.append(dummy);
+    });
+    var field = $('<input></input>');
+    field.attr('type','hidden');
+    field.attr('name','sender');
+    field.attr('value',username);
+    
+    fakeForm.append(field);
+    
+    var field1 = $('<input></input>');
+    field1.attr('type','hidden');
+    field1.attr('name','date');
+    field1.attr('value',$.now());
+    
+    fakeForm.append(field);
+    
+    $(document.body).append(fakeForm);
+    fakeForm.submit();
+    console.log("dud");
+    return false;
 }
