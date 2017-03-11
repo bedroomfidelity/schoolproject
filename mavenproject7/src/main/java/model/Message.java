@@ -114,7 +114,7 @@ public class Message implements Serializable {
     }
 
     @Column(name = "sentdate", nullable = false)
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     @XmlElement
     public Date getSentdate() {
         return sentdate;

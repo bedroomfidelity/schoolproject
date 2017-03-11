@@ -44,9 +44,9 @@ public class TaskResource {
             @FormParam("description") String description, @FormParam("startdate") String startdate,
             @FormParam("deadline") String deadline, @FormParam("worker") String worker) throws ParseException{
         //add new task
-        //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-        Timestamp start = convertTime(startdate);
-        Timestamp end = convertTime(deadline);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        Date start = format.parse(startdate);
+        Date end = format.parse(deadline);
         Task task = new Task(taskname, description, start, end, false);
         dao.addTask(task);
         //add new task ralationship with user
@@ -156,9 +156,4 @@ public class TaskResource {
         return Response.status(200).build();
     }
     
-    public Timestamp convertTime(String datetimelocal){
-        datetimelocal+=":00";
-        Timestamp value = Timestamp.valueOf(datetimelocal.replace("T", " "));
-        return value;
-    }
 }

@@ -37,10 +37,10 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 @Path("user")
 public class UserResource {
 
-    private UserDAO dao = new UserDAO();
-    
     @Context
     private ServletContext context;
+    
+    private UserDAO dao = new UserDAO();
     
     //ADD NEW USER WITH A MULTIPART FORM
     @POST
@@ -52,14 +52,14 @@ public class UserResource {
             @FormDataParam("address") String address, @FormDataParam("phonenumber") String phonenumber,
             @FormDataParam("image") InputStream image, @FormDataParam("image") FormDataContentDisposition imageDetail) {
         if (dao.getByUsername(username).isEmpty()) {
-            String uploadedLocation = "d:/server/images/" + imageDetail.getFileName();
-            //String uploadedLocation = context.getRealPath("src/main/webapp/WEB-INF/avatar/") + imageDetail.getFileName();
+            //String uploadedLocation = "d:/server/images/" + imageDetail.getFileName();
+            String uploadedLocation = context.getRealPath("/pic/") + imageDetail.getFileName();
             writeFile(uploadedLocation, image);
             User user = new User(username, password, title, email,
                     phonenumber, firstname, lastname, address, imageDetail.getFileName());
             dao.addUser(user);
-            System.out.println(uploadedLocation);
             //return Response.status(200).build();
+
         } else {
             //return Response.noContent().build();
         }

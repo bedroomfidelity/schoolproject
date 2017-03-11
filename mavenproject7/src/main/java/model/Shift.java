@@ -68,7 +68,7 @@ public class Shift implements Serializable {
         this.employee = employee;
     }
 
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "starttime", nullable = false)
     @XmlElement
     public Date getStarttime() {
@@ -79,7 +79,7 @@ public class Shift implements Serializable {
         this.starttime = starttime;
     }
 
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "endtime", nullable = false)
     @XmlElement
     public Date getEndtime() {

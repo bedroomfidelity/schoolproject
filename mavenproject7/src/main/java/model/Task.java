@@ -38,8 +38,8 @@ public class Task implements Serializable {
     private Long taskID;
     private String taskname;
     private String description;
-    private Timestamp startdate;
-    private Timestamp deadline;
+    private Date startdate;
+    private Date deadline;
     private boolean done;
     private List<User> workers;
     private List<Comment> comments;
@@ -48,7 +48,7 @@ public class Task implements Serializable {
     public Task() {
     }
 
-    public Task(String taskname, String description, Timestamp startdate, Timestamp deadline, boolean done) {
+    public Task(String taskname, String description, Date startdate, Date deadline, boolean done) {
         this.taskname = taskname;
         this.description = description;
         this.startdate = startdate;
@@ -90,27 +90,27 @@ public class Task implements Serializable {
         this.description = description;
     }
 
-    //@Temporal(TemporalType.TIMESTAMP)
-    @Type(type = "timestamp")
+    @Temporal(TemporalType.TIMESTAMP)
+    //@Type(type = "timestamp")
     @Column(name = "startdate", nullable = false)
     @XmlElement
-    public Timestamp getStartdate() {
+    public Date getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(Timestamp startdate) {
+    public void setStartdate(Date startdate) {
         this.startdate = startdate;
     }
 
-    //@Temporal(TemporalType.TIMESTAMP)
-    @Type(type = "timestamp")
+    @Temporal(TemporalType.TIMESTAMP)
+    //@Type(type = "timestamp")
     @Column(name = "deadline", nullable = false)
     @XmlElement
-    public Timestamp getDeadline() {
+    public Date getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Timestamp deadline) {
+    public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
 
