@@ -4,7 +4,7 @@
 }
 .form-horizontal{
     margin-left: 400px;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 .help-block{
     font-weight: bold;
@@ -17,4 +17,22 @@
 .newr {
     padding-bottom: 10px;
     margin-bottom: 10px;
+}
+.task-card{
+    background-color: #606060;
+    border-radius: 15px;
+    padding: 1em;
+    height: 60em;
+}
+.task-card h3 {
+    color: white;
+}
+.task-content{
+    height: 52em;
+    overflow-y: auto !important;
+    display: block;
+    background-color:white;
+}
+.list-group a p.mb-0 {
+    font-weight: 200;
 }

@@ -40,9 +40,8 @@ function getProfileTag(){
 }
 function showTaskList(){
     username = getCookie("uname");
-    console.log(username);
+    $("#task-content .list-group").empty();
     $.get("api/task/undone/"+username,function(data){
-        console.log(data);
         $xml=$(data);
         $tasks = $xml.find("task").each(function(index){
             var taskName = $(this).find('taskname').text();
@@ -78,16 +77,43 @@ function showTaskList(){
             $("#task-content .list-group").append(theTask);
         });
     });
-    
+    console.log('Finish showing tasks');
 }
 function finishTask(){
     var taskID = $(this).parent().attr('id').substring(4);
     $.ajax({url:'api/task/done/'+taskID,type:'PUT',success: function(response){
-            console.log(response);
     }});
+    $("#task-content .list-group").empty();
 }
 function showMessages(){
-    
+    $.get("api/message/byreceiver/"+username,function(data){
+        $xml=$(data);
+        $tasks = $xml.find("message").each(function(index){
+            var sender = $(this).find('sender').find('firstname').text() + " " + $(this).find('sender').find('lastname').text();
+            var sentDate = $(this).find('sentdate').text();
+            var content = $(this).find('content').text();
+            var messageID = $(this).find('taskID').text();
+            var theTask = document.createElement('a');
+            theTask.href ="#";
+            theTask.id = "message" + messageID;
+            var senderContainer = document.createElement('span');
+            senderContainer.className = 'mail-sender';
+            senderContainer.appendChild(document.createTextNode(sender));
+            var sentDateContainer = document.createElement('span');
+            sentDateContainer.className = 'mail-subject';
+            sentDateContainer.appendChild(document.createTextNode(sentDate));
+            var contentContainer = document.createElement('span');
+            contentContainer.className = 'mail-message-preview';
+            contentContainer.appendChild(document.createTextNode(content));
+            theTask.appendChild(senderContainer);
+            theTask.appendChild(sentDateContainer);
+            theTask.appendChild(contentContainer);
+            var theTaskContainer = document.createElement('li');
+            theTaskContainer.appendChild(theTask);
+            console.log(theTaskContainer);
+            $("#recentmess .mail-list").append(theTaskContainer);
+        });
+    });
 }
 function getCookie(cname) {
     var name = cname     + "=";

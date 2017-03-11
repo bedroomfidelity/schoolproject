@@ -46,7 +46,7 @@ public class UserResource {
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("signup")
-    public Response signUp(@FormDataParam("username") String username, @FormDataParam("password") String password,
+    public void signUp(@FormDataParam("username") String username, @FormDataParam("password") String password,
             @FormDataParam("title") String title, @FormDataParam("email") String email,
             @FormDataParam("firstname") String firstname, @FormDataParam("lastname") String lastname,
             @FormDataParam("address") String address, @FormDataParam("phonenumber") String phonenumber,
@@ -59,9 +59,9 @@ public class UserResource {
                     phonenumber, firstname, lastname, address, imageDetail.getFileName());
             dao.addUser(user);
             System.out.println(uploadedLocation);
-            return Response.status(200).build();
+            //return Response.status(200).build();
         } else {
-            return Response.noContent().build();
+            //return Response.noContent().build();
         }
     }
     
@@ -128,8 +128,13 @@ public class UserResource {
         if (!dao.getByUsername(username).isEmpty()) {
             User user = dao.getByUsername(username).get(0);
             if (user.getPassword().equals(password)) {
-                java.net.URI location = new java.net.URI("../Home.html?user=" + user.getUsername());
+                if(user.getTitle().equals("Manager")){
+                java.net.URI location = new java.net.URI("../ManagerHome.html");
                 return Response.temporaryRedirect(location).build();
+                } else {
+                java.net.URI location = new java.net.URI("../Home.html");
+                return Response.temporaryRedirect(location).build();
+                }
             }
         }
         return null;

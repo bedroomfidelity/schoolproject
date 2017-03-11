@@ -43,11 +43,13 @@
         </ul>
     </div>
     <div id="all-content">
+        <div class="task-card">
+                    <h3>New Register</h3>
+
+                    <div class="task-content">
+                        
             <form class="form-horizontal" enctype="multipart/form-data" action='api/user/signup' method="POST">
                 <fieldset>
-                    <div id="legend">
-                        <h3 class="newr">New Register</h3>
-                    </div>
                     <br><div class="control-group">
 
                         <label class="control-label"  for="username">Username</label>
@@ -74,7 +76,8 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="title">Title:</label>
-                        <select class="controls" id="title" name="title">
+                    <br>
+                        <select class="controls input-xlarge" id="title" name="title">
                           <option>Manager</option>
                           <option>Cashier</option>
                           <option>Storage Keeper</option>
@@ -136,7 +139,8 @@
                     </div>
                 </div>
                     </div>
-
+                     </div>
+                </div>
             </fieldset>
         </form>
     </div>
