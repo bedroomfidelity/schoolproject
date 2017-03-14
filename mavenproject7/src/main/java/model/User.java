@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.annotations.*;
-
+import javax.persistence.OrderBy;
 /**
  *
  * @author N5537
@@ -188,6 +188,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "sender")
     @Cascade({CascadeType.SAVE_UPDATE})
     @XmlTransient
+    @OrderBy("messageID")
     public List<Message> getSentMessages() {
         return sentMessages;
     }
@@ -195,10 +196,11 @@ public class User implements Serializable {
     public void setSentMessages(List<Message> sentMessages) {
         this.sentMessages = sentMessages;
     }
-
+    
     @OneToMany(mappedBy = "receiver")
     @Cascade({CascadeType.SAVE_UPDATE})
     @XmlTransient
+    @OrderBy("messageID")
     public List<Message> getReceivedMessages() {
         return receivedMessages;
     }
@@ -222,7 +224,7 @@ public class User implements Serializable {
     @JoinTable(name = "user_task", joinColumns = {
         @JoinColumn(name = "worker", referencedColumnName = "username")}, inverseJoinColumns = {
         @JoinColumn(name = "task", referencedColumnName = "taskID")})
-    @Cascade({CascadeType.ALL})
+    @Cascade({CascadeType.SAVE_UPDATE})
     @XmlTransient
     public List<Task> getTasks() {
         return tasks;

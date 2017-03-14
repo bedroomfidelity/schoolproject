@@ -34,7 +34,9 @@ and open the template in the editor.
             <button type="submit" class="green-button" name="Submit">Submit</button>
         </form>
         
-        <form action="api/task/add" id="addtask" method="post">
+        <form action="api/task/edit" id="addtask" method="post">
+            <span>Id:</span>
+            <input type=number name="taskid" maxlength="20" required>
             <span>Task name:</span>
             <input type="text" name="taskname" maxlength="20" required>
             <span>Description:</span>
@@ -63,6 +65,5 @@ and open the template in the editor.
             <br/>
             <button type="submit" class="green-button" name="Submit">Submit</button>
         </form>
-        
     </body>
 </html>

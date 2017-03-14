@@ -21,6 +21,8 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 /**
  *
@@ -91,6 +93,7 @@ public class Shift implements Serializable {
     }
 
     @OneToMany(mappedBy = "shift")
+    @Cascade(CascadeType.ALL)
     @XmlTransient
     public List<Notification> getNotifications() {
         return notifications;

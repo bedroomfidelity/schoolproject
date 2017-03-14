@@ -6,6 +6,7 @@
 package resource;
 
 import DAO.UserDAO;
+import DAO.UserTaskDAO;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -68,7 +69,12 @@ public class UserResource {
     @DELETE
     @Path("delete/{username}")
     public Response deleteUser(@PathParam("username") String username) {
+        //get user with matching username
         User user = dao.getByUsername(username).get(0);
+        //delete entry in user_task
+        UserTaskDAO usertaskdao = new UserTaskDAO();
+        usertaskdao.deleteByUser(username);
+        //delete user
         dao.deleteUser(user);
         return Response.status(200).build();
     }

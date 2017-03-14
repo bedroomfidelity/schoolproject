@@ -35,7 +35,7 @@ public class StartUp implements ServletContextListener {
                 .addAnnotatedClass(model.Shift.class)
                 .addAnnotatedClass(model.Notification.class);
         config.configure();
-        new SchemaExport(config).create(true,true);
+        new SchemaExport(config).drop(false,false);
         
         StandardServiceRegistryBuilder serviceRegistryBuilder
                 = new StandardServiceRegistryBuilder();

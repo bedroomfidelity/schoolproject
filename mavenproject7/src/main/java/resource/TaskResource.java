@@ -62,23 +62,28 @@ public class TaskResource {
     }
     
     //EDIT A TASK WITH A FORM
-    @PUT
+    @POST
     @Path("edit")
     public Response editTask(@FormParam("taskid") Long taskid, @FormParam("taskname") String taskname,
-            @FormParam("description") String description, @FormParam("startdate") Timestamp startdate,
-            @FormParam("deadline") Timestamp deadline, @FormParam("done") boolean done){
+            @FormParam("description") String description, @FormParam("startdate") String startdate,
+            @FormParam("deadline") String deadline, @FormParam("done") boolean done) throws ParseException{
         //get the task
         Task task = dao.getById(taskid).get(0);
         //edit task information
-        task.setDeadline(deadline);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        Date start = format.parse(startdate);
+        Date end = format.parse(deadline);
+        task.setTaskname(taskname);
+        task.setDeadline(start);
         task.setDescription(description);
         task.setDone(done);
-        task.setStartdate(startdate);
+        task.setStartdate(end);
         dao.editTask(task);
         //add new notification
-        String user = task.getWorkers().get(0).getUsername();
         UserDAO userdao = new UserDAO();
         NotiDAO notidao = new NotiDAO();
+        UserTaskDAO usertaskdao = new UserTaskDAO();
+        String user = usertaskdao.getByTask(taskid).get(0);
         User u = userdao.getByUsername(user).get(0);
         Notification noti = new Notification(u, task, "edit");
         notidao.addNotification(noti);
@@ -92,7 +97,10 @@ public class TaskResource {
         //get the task
         Task task = dao.getById(taskid).get(0);
         //get user ralated to the task
-        String user = task.getWorkers().get(0).getUsername();
+        UserTaskDAO usertaskdao = new UserTaskDAO();
+        String user = usertaskdao.getByTask(taskid).get(0);
+        //delete entry in user_task
+        usertaskdao.deleteByTask(taskid);
         //delete the task
         dao.deleteTask(task);
         //add new notification
