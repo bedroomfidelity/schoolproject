@@ -129,10 +129,10 @@ public class UserResource {
             User user = dao.getByUsername(username).get(0);
             if (user.getPassword().equals(password)) {
                 if(user.getTitle().equals("Manager")){
-                java.net.URI location = new java.net.URI("../ManagerHome.html");
+                java.net.URI location = new java.net.URI("../ManagerHome.html?user="+username);
                 return Response.temporaryRedirect(location).build();
                 } else {
-                java.net.URI location = new java.net.URI("../Home.html");
+                java.net.URI location = new java.net.URI("../Home.html?user="+username);
                 return Response.temporaryRedirect(location).build();
                 }
             }

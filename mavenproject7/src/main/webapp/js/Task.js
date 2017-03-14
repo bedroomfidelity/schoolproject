@@ -9,23 +9,11 @@ $(document).ready(function(){
    username = getCookie("uname");
    websitebuild();
 });
-function getProfileTag(){
-    username = getCookie("uname");
-    console.log(username);
-    $.get("api/user/getbyname/"+username,function(data){
-        $xml=$(data);
-        $firstname = $xml.find("firstname");
-        $lastname = $xml.find("lastname");
-        var fullName = $firstname.text() + " " + $lastname.text();
-        console.log(fullName);
-        $("#userid").html(fullName);
-    });
-}
 function websitebuild(){
     showTaskList();
     showFinishedTaskList();
-    getProfileTag();
 }
+//show user's undone tasks
 function showTaskList(){
     username = getCookie("uname");
     console.log(username);
@@ -68,6 +56,7 @@ function showTaskList(){
     });
  
 }
+//show user's done tasks
 function showFinishedTaskList(){
     username = getCookie("uname");
     console.log(username);
@@ -118,9 +107,11 @@ function getCookie(cname) {
     }
     return "";
 }
+// click done button will trigger this function which will change clicked task from undone to done
 function finishTask(){
     var taskID = $(this).parent().attr('id').substring(4);
     $.ajax({url:'api/task/done/'+taskID,type:'PUT',success: function(response){
             console.log(response);
     }});
+    setTimeout(function () { window.location.reload(); }, 10);
 }

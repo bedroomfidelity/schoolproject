@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.annotations.*;
+import javax.persistence.OrderBy;
 
 /**
  *
@@ -188,6 +189,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "sender")
     @Cascade({CascadeType.SAVE_UPDATE})
     @XmlTransient
+    @OrderBy("messageID")
     public List<Message> getSentMessages() {
         return sentMessages;
     }
@@ -199,6 +201,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "receiver")
     @Cascade({CascadeType.SAVE_UPDATE})
     @XmlTransient
+    @OrderBy("messageID")
     public List<Message> getReceivedMessages() {
         return receivedMessages;
     }

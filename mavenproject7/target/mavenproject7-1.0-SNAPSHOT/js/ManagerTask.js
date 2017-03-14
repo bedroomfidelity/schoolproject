@@ -3,20 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 $(document).ready(function(){
    username = getCookie("uname");
-   websitebuild();
-   console.log($.now());
+   showTaskList();
 });
-function websitebuild(){
-    showTaskList();
-}
 function showTaskList(){
     username = getCookie("uname");
-    console.log(username);
+    console.log('what');
     $.get("api/task/undone/",function(data){
-        console.log(data);
         $xml=$(data);
         $tasks = $xml.find("task").each(function(index){
             var taskName = $(this).find('taskname').text();
@@ -64,11 +58,9 @@ function getCookie(cname) {
 }
 function notibox(){
     var dummy = document.getElementById('worker').value;
-    console.log(dummy);
     $.get("api/user/getbyname/"+dummy,function(data){
         $xml = $(data);
         $user = $xml.find("username").text();
-        console.log($user);
         if($user == dummy ){
         $('#button').prop('disabled',false);
     } else {

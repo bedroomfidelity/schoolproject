@@ -25,14 +25,26 @@ html,body{
 #buttun{
     display:inline-block;
 }
+#noti-place {
+    display:block;
+    float: right;
+    margin-top: 1em;
+    padding-right: 2em;
+    margin-left: 20px;
+}
+#noti-place .dropdown-menu {
+    left: -5em;
+    color: white;
+    background-color: #606060;
+    padding: 2px;
+}
 #profile-tag {
     display:inline-block;
     float: right;
-    margin-right: 2em;
     margin-top: 0.5em;
 }
 #profile-tag a img{
-    display:inline-block;
+    display:block;
     height: 50px;
     width: 50px;
     -webkit-border-radius:50%;

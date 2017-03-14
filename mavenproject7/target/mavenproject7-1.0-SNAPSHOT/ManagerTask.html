@@ -11,31 +11,38 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <link href="css/web.css" rel="stylesheet" type="text/css"/>
     <link href="css/Assignment.css" rel="stylesheet" type="text/css"/>
-    <script src="js/ManagerTask.js" type="text/javascript"></script>
     <script src="js/general.js" type="text/javascript"></script>
+    <script src="js/ManagerTask.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="main">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="banner">
-        <a href="ManagerHome.html">
+            <a href="ManagerHome.html">
                <img src="pic/icon.png" alt="logohere">
-        </a>
-        <div class="dropdown" id="profile-tag">
-            <a href="#" data-toggle="dropdown">
-                <img src="pic/profile-picture.png" alt="profile picture">
-                <p id="userid">Khanh Phan</p>
             </a>
-            <div class="dropdown-menu">
-                <a href="ManagerProfile.html">My Profile</a>
-                <br>
-                <a href="index.html">Log out</a>
+            <div class="dropdown" id="noti-place">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="badge badge-default">0</span>
+                </a>
+                <div class="dropdown-menu">
+                    <p></p>
+                </div>
+            </div>
+            <div class="dropdown" id="profile-tag">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="pic/profile-picture.png" alt="profile picture">
+                    <p id="userid">Khanh Phan</p>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="ManagerProfile.html">My Profile</a>
+                    <br>
+                    <a href="index.html">Log out</a>
+                </div>
             </div>
         </div>
-    </div>
     <div id="sidebar">
         <ul class="list-group" id="menu">
             <li class="list-group-item"><a href="ManagerHome.html">Home</a></li>
-            <li class="list-group-item"><a href="MessegesManager.html">Messages</a></li>
             <li class="list-group-item"><a href="Register.html">Register</a></li>
             <li class="list-group-item"><a href="ManagerTask.html">Task</a></li>
         </ul>
@@ -57,7 +64,7 @@
                     <h3>Assign new task</h3>
                     <div class="task-content-1">
                         <div class="list-group">
-                            <form class="form-horizontal" action='api/task/add' method="POST">
+                            <form class="form-horizontal" action='api/task/add' method="POST" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
                                 <fieldset>
                                     <br><div class="control-group">
 

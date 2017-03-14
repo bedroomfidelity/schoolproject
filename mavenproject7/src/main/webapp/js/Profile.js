@@ -6,6 +6,7 @@
 
 var username;
 var req;
+var theSocket = new WebSocket('ws://localhost:8080/mavenproject7/endpoint');
 $(document).ready(function(){
     console.log(window.location.search);
         var getSearchText = window.location.search.substring(1);
@@ -23,10 +24,45 @@ $(document).ready(function(){
     websitebuild(); 
 });
 function websitebuild(){
-    console.log("fetching");
     getProfileTag();
     getAvatar();
     getUserProfile();
+    getNoti(username);
+    $('#noti-place div p').click(function(){
+        $.ajax({
+           url: 'api/noti/view/'+username,
+           type: 'PUT'
+        });
+        $('#noti-place a span').attr('class','badge badge-default');
+        $('#noti-place a span').html(0);
+        $('#noti-place div p').html('No notification.');
+        setTimeout(function() { window.location.reload(); }, 10);
+    });
+}
+theSocket.onmessage = function(e){
+        if (username == e.data){
+            getNoti(e.data);
+        }
+    };
+
+
+function getNoti(name){
+    $.get('api/noti/unviewed/'+name,function(data){
+           console.log(data); 
+           $xml = $(data);
+           $noti = $xml.find('notification');
+           var numofnoti = $noti.length;
+           console.log(numofnoti);
+           if(numofnoti == 0){
+            $('#noti-place a span').attr('class','badge badge-default');
+            $('#noti-place a span').html(0);
+            $('#noti-place div p').html('No notification.');  
+           } else {
+            $('#noti-place a span').attr('class','badge badge-danger');
+            $('#noti-place a span').html(numofnoti);
+            $('#noti-place div p').html('You have new notifications! Click to clear notification');
+           }
+        });
 }
 
 function getProfileTag(){
@@ -71,6 +107,7 @@ function getUserProfile(){
     username = getCookie("uname");
     console.log(username+"'s profile");
     $.get("api/user/getbyname/"+username,function(data){
+        console.log(data);
         $xml=$(data);
         
         $firstname = $xml.find("firstname");
@@ -96,7 +133,7 @@ function getUserProfile(){
         $("#fname").html(firstName);
         $("#lname").html(lastName);
         $("#uname").html(uname);
-        $("#title").html(job);
+        $("#job").html(job);
         $("#hadd").html(address);
         $("#mail").html(email);
         $("#pnumber").html(pnumber);
